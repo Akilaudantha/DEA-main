@@ -90,11 +90,20 @@ public class Log extends HttpServlet {
         Connection con=DriverManager.getConnection(url, "root","");
         Statement st=con.createStatement();
         
+        
+        
+        String q2="SELECT * FROM Admin";
+        ResultSet rs2=st.executeQuery(q2);
+        while (rs2.next())
+        {
+            if (uname.equals(rs2.getString("Username")) && pass.equals(rs2.getString("Password")))
+            {
+                response.sendRedirect("AdminHome.jsp");
+            }
+        }
+        
         String q1="SELECT * FROM Users";
         ResultSet rs1=st.executeQuery(q1);
-        
-       /* String q2="SELECT * FROM Admin";
-        ResultSet rs2=st.executeQuery(q2);*/
         
         while (rs1.next())
         {
@@ -102,14 +111,10 @@ public class Log extends HttpServlet {
             {
                 response.sendRedirect("Home.jsp");
             }
+            
         }
-        /*while (rs2.next())
-        {
-            if(uname.equals(rs2.getString("UserName")) && pass.equals(rs2.getString("Password")))
-            {
-                response.sendRedirect("AdminHome.jsp");
-            }
-        }*/
+        
+        
         PrintWriter out=response.getWriter();
         out.println("Login Error");
         
