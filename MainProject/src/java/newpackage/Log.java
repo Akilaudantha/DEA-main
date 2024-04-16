@@ -98,7 +98,7 @@ public class Log extends HttpServlet {
         {
             if (uname.equals(rs2.getString("Username")) && pass.equals(rs2.getString("Password")))
             {
-                response.sendRedirect("AdminHome.jsp");
+                response.sendRedirect("AdminHome.html");
             }
         }
         
