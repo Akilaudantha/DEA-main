@@ -80,7 +80,7 @@
         
         Statement s = conn.createStatement();
         // Prepare the SQL statement to insert the image into the database
-        String sql = "SELECT * FROM Shoes";
+        String sql = "SELECT * FROM Clothes";
         
         ResultSet rs=s.executeQuery(sql);
         

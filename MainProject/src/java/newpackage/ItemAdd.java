@@ -88,6 +88,7 @@ public class ItemAdd extends HttpServlet {
             String iprice=request.getParameter("iprice");
             String idescrip=request.getParameter("idescrip");
             PrintWriter out=response.getWriter();
+            String type=request.getParameter("cat");
           
         try {
         Class.forName("com.mysql.jdbc.Driver");
@@ -102,7 +103,7 @@ public class ItemAdd extends HttpServlet {
              Part iimage= request.getPart("iimage");
             InputStream input = iimage.getInputStream();
         
-       
+            if (type.equals("Shoe")){
              String sql = "INSERT INTO Shoes VALUES ('"+inum+"','"+iname+"','"+iprice+"','"+idescrip+"',?)";
              //s.executeUpdate(sql);
              //String sql2 = "INSERT INTO Shoes(Image) VALUES (?)";
@@ -111,6 +112,19 @@ public class ItemAdd extends HttpServlet {
 
             
             ps.executeUpdate();
+            }
+            else if (type.equals("Clothes")){
+            
+                String sql = "INSERT INTO Clothes VALUES ('"+inum+"','"+iname+"','"+iprice+"','"+idescrip+"',?)";
+             //s.executeUpdate(sql);
+             //String sql2 = "INSERT INTO Shoes(Image) VALUES (?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setBlob(1, input);
+
+            
+            ps.executeUpdate();
+                
+            }
             response.sendRedirect("Home.jsp");
         }
 
