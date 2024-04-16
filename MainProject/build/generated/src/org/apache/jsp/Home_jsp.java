@@ -3,6 +3,19 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.io.*;
+import java.sql.*;
+import javax.servlet.http.*;
+import javax.servlet.*;
+import javax.servlet.annotation.MultipartConfig;
+import java.util.*;
+import java.io.InputStream;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.Part;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.io.PrintWriter;
+import javax.servlet.annotation.MultipartConfig;
 
 public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -41,56 +54,89 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Home</title>\n");
-      out.write("        <style>\n");
-      out.write("        \n");
-      out.write("        .menu {\n");
-      out.write("            background-color: #333;\n");
-      out.write("            color: #fff;\n");
-      out.write("            padding: 10px;\n");
-      out.write("        }\n");
-      out.write("        .menu ul {\n");
-      out.write("            list-style-type: none;\n");
-      out.write("            margin: 0;\n");
-      out.write("            padding: 0;\n");
-      out.write("            text-align: center;\n");
-      out.write("        }\n");
-      out.write("        .menu li {\n");
-      out.write("            display: inline-block;\n");
-      out.write("            margin-right: 20px;\n");
-      out.write("        }\n");
-      out.write("        .menu a {\n");
-      out.write("            text-decoration: none;\n");
-      out.write("            color: #fff;\n");
-      out.write("        }\n");
-      out.write("    </style>\n");
-      out.write("</head>\n");
-      out.write("<body>\n");
-      out.write("    <nav class=\"menu\">\n");
-      out.write("        <ul>\n");
-      out.write("            <li><a href=\"#\">Home</a></li>\n");
-      out.write("            <li><a href=\"#\">About</a></li>\n");
-      out.write("            <li><a href=\"#\">Services</a></li>\n");
-      out.write("            <li><a href=\"#\">Contact</a></li>\n");
-      out.write("        </ul>\n");
-      out.write("    </nav>\n");
-      out.write("\n");
-      out.write("    \n");
-      out.write("    <div>\n");
-      out.write("        <h1>Welcome to Our Website!</h1>\n");
-      out.write("        \n");
-      out.write("    </div>\n");
-      out.write("\n");
-      out.write("</body>\n");
-      out.write("    \n");
-      out.write("</html>\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <title>Home</title>\r\n");
+      out.write("        <style>\r\n");
+      out.write("        \r\n");
+      out.write("        .menu {\r\n");
+      out.write("            background-color: #333;\r\n");
+      out.write("            color: #fff;\r\n");
+      out.write("            padding: 10px;\r\n");
+      out.write("        }\r\n");
+      out.write("        .menu ul {\r\n");
+      out.write("            list-style-type: none;\r\n");
+      out.write("            margin: 0;\r\n");
+      out.write("            padding: 0;\r\n");
+      out.write("            text-align: center;\r\n");
+      out.write("        }\r\n");
+      out.write("        .menu li {\r\n");
+      out.write("            display: inline-block;\r\n");
+      out.write("            margin-right: 20px;\r\n");
+      out.write("        }\r\n");
+      out.write("        .menu a {\r\n");
+      out.write("            text-decoration: none;\r\n");
+      out.write("            color: #fff;\r\n");
+      out.write("        }\r\n");
+      out.write("    </style>\r\n");
+      out.write("</head>\r\n");
+      out.write("<body>\r\n");
+      out.write("    <nav class=\"menu\">\r\n");
+      out.write("        <ul>\r\n");
+      out.write("            <li><a href=\"#\">Home</a></li>\r\n");
+      out.write("            <li><a href=\"#\">About</a></li>\r\n");
+      out.write("            <li><a href=\"#\">Services</a></li>\r\n");
+      out.write("            <li><a href=\"#\">Contact</a></li>\r\n");
+      out.write("        </ul>\r\n");
+      out.write("    </nav>\r\n");
+      out.write("\r\n");
+      out.write("    \r\n");
+      out.write("    <div>\r\n");
+      out.write("        <h1>Welcome to Our Website!</h1>\r\n");
+      out.write("        \r\n");
+      out.write("    </div>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<table>\r\n");
+      out.write("\r\n");
+      out.write("        ");
+// Establish the connection to your database
+        Class.forName("com.mysql.jdbc.Driver");
+        String url="jdbc:mysql://localhost:3306/mainDEA";
+        
+        Connection conn = DriverManager.getConnection(url, "root", "");
+        
+        // Get the image file from the request
+        
+        
+        Statement s = conn.createStatement();
+        // Prepare the SQL statement to insert the image into the database
+        String sql = "SELECT * FROM Shoes";
+        
+        ResultSet rs=s.executeQuery(sql);
+        
+        while (rs.next())
+        {
+            
+        byte[] imageData = rs.getBytes("Image");
+        
+       
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        
+         
+        out.println("<tr><td><img src=\"data:image/png;base64," + base64Image + "\" /></td></tr>");
+        
+        }
+      out.write("\r\n");
+      out.write("       \r\n");
+      out.write("       \r\n");
+      out.write("        </table>\r\n");
+      out.write("</body>\r\n");
+      out.write("    \r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

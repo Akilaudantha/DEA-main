@@ -39,12 +39,11 @@
             String url="jdbc:mysql://localhost:3306/mainDEA";
             Connection con=DriverManager.getConnection(url,"root","");
             Statement st=con.createStatement();
-             /*String q1="INSERT INTO Item VALUES('"+inum+"','"+iname+"','"+iprice+"','"+idescrip+"','"+iimage+"')";
-             st.executeUpdate(q1);*/
-             String sql = "INSERT INTO Item VALUES('"+inum+"','"+iname+"','"+iprice+"','"+idescrip+"','(?)')";
-PreparedStatement statement = con.prepareStatement(sql);
-statement.setBinaryStream(1, inputStream);
- st.executeUpdate(sql);
+             
+             String sql = "INSERT INTO Shoes VALUES('"+inum+"','"+iname+"','"+iprice+"','"+idescrip+"','(?)')";
+             PreparedStatement statement = con.prepareStatement(sql);
+             statement.setBinaryStream(1, inputStream);
+             st.executeUpdate(sql);
 
              
             
