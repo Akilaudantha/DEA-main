@@ -84,6 +84,34 @@
             background-color: black;
             color: #fff;
         }
+        .flex-container {
+        display: flex;
+    }
+    .flex-item {
+        flex: 1; /* Divide into two equal parts */
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        width: 235px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        margin: 20px;
+    }
+
+  
+    .card h3 {
+        margin-top: 0;
+    }
+
+   
+    .card p {
+        margin-bottom: 0;
+    }
         
     </style>
 </head>
@@ -119,10 +147,10 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" height="400" width="550" src="Image/login.jpg" alt="First slide">
+                <img class="d-block w-100" height="500" width="550" src="Image/login.jpg" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" height="400" width="550" src="Image/form.jpg" alt="Second slide">
+                <img class="d-block w-100" height="500" width="550" src="Image/form.jpg" alt="Second slide">
             </div>
             <%--<div class="carousel-item">
                 <img class="d-block w-100" src="image3.jpg" alt="Third slide">
@@ -136,10 +164,64 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div></div>
+    </div>
+        <br>
+        
+        </div>
+        
+        <br>
+        
+        <div class="container">
+        <div class="flex-container">
+            <div class="flex-item"><a href="Shoes.jsp"><img src="Image/form.jpg" width="515" height="200"></a></div>
+            <div class="flex-item"><a href="Clothes.jsp"><img src="Image/login.jpg" width="515" height="200"></a></div>
+</div>
+            <br>
+            
+            <hr>
+        
+            <table>
+                <%
+                    Class.forName("com.mysql.jdbc.Driver");
+                    String url="jdbc:mysql://localhost:3306/mainDEA";
+                    Connection con=DriverManager.getConnection(url,"root","");
+                    Statement st=con.createStatement();
+                    String q1="SELECT*FROM Shoes";
+                    ResultSet rs1=st.executeQuery(q1);
+                    
+                    int a=0;
+                    while(rs1.next())
+                    {%>
+                    <tr><td><%=rs1.getString("ItemName")%></td></tr>
+                  
+                        
+                    <%}
+                    %>
+            </table>
+            <table>
+                <tr><td><div class="card">
+        <h3>Card Title 1</h3>
+        <p>This is some sample content inside the card. You can put any text or other HTML elements here.</p>
+                        </div></td>
+                        <td><div class="card">
+        <h3>Card Title 2</h3>
+        <p>This is some sample content inside the card. You can put any text or other HTML elements here.</p>
+                            </div></td>
+                            <td>  <div class="card">
+        <h3>Card Title 3</h3>
+        <p>This is some sample content inside the card. You can put any text or other HTML elements here.</p>
+                                </div></td>
+                                 <td>  <div class="card">
+        <h3>Card Title 3</h3>
+        <p>This is some sample content inside the card. You can put any text or other HTML elements here.</p>
+                                </div></td>
+                </tr>
+            </div>
+        
+            </table>
         <table>
 
-        <%// Establish the connection to your database
+        <%--<%// Establish the connection to your database
         Class.forName("com.mysql.jdbc.Driver");
         String url="jdbc:mysql://localhost:3306/mainDEA";
         
@@ -165,7 +247,7 @@
          
         out.println("<tr><td><img src=\"data:image/png;base64," + base64Image + "\" /></td></tr>");
         
-        }%>
+        }%>--%>
        
        
         </table>
