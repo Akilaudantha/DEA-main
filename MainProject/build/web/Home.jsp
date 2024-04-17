@@ -145,11 +145,11 @@
         
         Connection conn = DriverManager.getConnection(url, "root", "");
         
-        // Get the image file from the request
+       
         
         
         Statement s = conn.createStatement();
-        // Prepare the SQL statement to insert the image into the database
+       
         String sql = "SELECT * FROM Clothes";
         
         ResultSet rs=s.executeQuery(sql);
