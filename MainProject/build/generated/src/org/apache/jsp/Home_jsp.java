@@ -62,6 +62,10 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\" rel=\"stylesheet\">\n");
       out.write("        <title>Home</title>\n");
       out.write("        <style>\n");
+      out.write("            .pimage{\n");
+      out.write("                width: 20px;\n");
+      out.write("                height: 10px;\n");
+      out.write("            }\n");
       out.write("        \n");
       out.write("        .menu {\n");
       out.write("            background-color: black;\n");
@@ -126,6 +130,12 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        padding: 20px;\n");
       out.write("        border: 1px solid #ccc;\n");
       out.write("    }\n");
+      out.write("    .flex-footer{\n");
+      out.write("        flex: 2; \n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("    }\n");
       out.write("    .card {\n");
       out.write("        border: 1px solid #ccc;\n");
       out.write("        border-radius: 8px;\n");
@@ -144,6 +154,11 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("   \n");
       out.write("    .card p {\n");
       out.write("        margin-bottom: 0;\n");
+      out.write("    }\n");
+      out.write("    .footer{\n");
+      out.write("        height: 400px;\n");
+      out.write("        background-color: black;\n");
+      out.write("        width: 100%;\n");
       out.write("    }\n");
       out.write("        \n");
       out.write("    </style>\n");
@@ -212,61 +227,109 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            \n");
       out.write("            <hr>\n");
       out.write("        \n");
-      out.write("            <table>\n");
+      out.write("            \n");
       out.write("                ");
 
                     Class.forName("com.mysql.jdbc.Driver");
                     String url="jdbc:mysql://localhost:3306/mainDEA";
                     Connection con=DriverManager.getConnection(url,"root","");
-                    Statement st=con.createStatement();
+                    Statement st1=con.createStatement();
+                    
                     String q1="SELECT*FROM Shoes";
-                    ResultSet rs1=st.executeQuery(q1);
-                    
+                    ResultSet rs1=st1.executeQuery(q1);
+                    Statement st2=con.createStatement();
+                    String q2="SELECT * FROM Clothes";
+                    ResultSet rs2=st2.executeQuery(q2);
                     int a=0;
-                    while(rs1.next())
-                    {
-      out.write("\n");
-      out.write("                    <tr><td>");
-      out.print(rs1.getString("ItemName"));
-      out.write("</td></tr>\n");
-      out.write("                  \n");
-      out.write("                        \n");
-      out.write("                    ");
-}
                     
       out.write("\n");
-      out.write("            </table>\n");
-      out.write("            <table>\n");
-      out.write("                <tr><td><div class=\"card\">\n");
-      out.write("        <h3>Card Title 1</h3>\n");
-      out.write("        <p>This is some sample content inside the card. You can put any text or other HTML elements here.</p>\n");
-      out.write("                        </div></td>\n");
-      out.write("                        <td><div class=\"card\">\n");
-      out.write("        <h3>Card Title 2</h3>\n");
-      out.write("        <p>This is some sample content inside the card. You can put any text or other HTML elements here.</p>\n");
-      out.write("                            </div></td>\n");
-      out.write("                            <td>  <div class=\"card\">\n");
-      out.write("        <h3>Card Title 3</h3>\n");
-      out.write("        <p>This is some sample content inside the card. You can put any text or other HTML elements here.</p>\n");
-      out.write("                                </div></td>\n");
-      out.write("                                 <td>  <div class=\"card\">\n");
-      out.write("        <h3>Card Title 3</h3>\n");
-      out.write("        <p>This is some sample content inside the card. You can put any text or other HTML elements here.</p>\n");
-      out.write("                                </div></td>\n");
-      out.write("                </tr>\n");
-      out.write("            </div>\n");
-      out.write("        \n");
-      out.write("            </table>\n");
-      out.write("        <table>\n");
+      out.write("                    \n");
+      out.write("                    <table>\n");
+      out.write("                        <tr>\n");
+      out.write("                            ");
+while(a < 2 && rs1.next() && rs2.next() )
+                     {
       out.write("\n");
+      out.write("                    \n");
+      out.write("                    <td><div class=\"card\">\n");
+      out.write("                 ");
+ 
+                byte[] imageData = rs1.getBytes("Image");
+                String base64Image = Base64.getEncoder().encodeToString(imageData);
+                
+                 
+      out.write("\n");
+      out.write("                 <img src=\"data:image/png;base64,");
+      out.print( base64Image );
+      out.write("\" width=\"200\" height=\"150\" />\n");
+      out.write("                <center><h3>");
+      out.print(rs1.getString("ItemName") );
+      out.write("</h3>\n");
+      out.write("                <p>");
+      out.print( rs1.getString("Description") );
+      out.write("</p>\n");
+      out.write("                <h4>Rs.");
+      out.print( rs1.getString("Price") );
+      out.write("</h4>\n");
+      out.write("                <form action=\"Shoes.jsp\">\n");
+      out.write("                    <button type=\"submit\">View more</button></center>\n");
+      out.write("                </form>\n");
+      out.write("                </div></td>\n");
+      out.write("\n");
+      out.write("                    <td><div class=\"card\">\n");
+      out.write("                 ");
+ 
+                byte[] iData = rs2.getBytes("Image");
+                String base64 = Base64.getEncoder().encodeToString(iData);
+                 
+      out.write("\n");
+      out.write("                 <img src=\"data:image/png;base64,");
+      out.print( base64 );
+      out.write("\" width=\"200\" height=\"150\" />\n");
+      out.write("                <center><h3>");
+      out.print( rs2.getString("ItemName") );
+      out.write("</h3>\n");
+      out.write("                <p>");
+      out.print( rs2.getString("Description") );
+      out.write("</p>\n");
+      out.write("                <h4>Rs.");
+      out.print( rs2.getString("Price") );
+      out.write("</h4>\n");
+      out.write("                <form action=\"Clothes.jsp\">\n");
+      out.write("                    <button type=\"submit\">View more</button></center>\n");
+      out.write("                </form>\n");
+      out.write("                </div></td>\n");
+      out.write("                    \n");
+      out.write("                     ");
+ a++;  
+                    }
+                    
+      out.write("\n");
+      out.write("                     </tr>\n");
+      out.write("                     \n");
+      out.write("                     </table>\n");
+      out.write("        </div>\n");
+      out.write("                     <div class=\"footer\">\n");
+      out.write("                        <div class=\"flex-container\">\n");
+      out.write("                            <div class=\"flex-footer\"><a href=\"AboutUs.html\">About Us</a><br>\n");
+      out.write("                                <p style=\"color:white;\">Contact Us<br>\n");
+      out.write("                                <a href=\"#\">Email Us</a><br>\n");
+      out.write("                                0112345678/0335869568</p>\n");
+      out.write("                            </div>\n");
+      out.write("                            <div class=\"flex-footer\"  style=\"text-align:center;\"><a href=\"AboutUs.html\">About Us</a></div>\n");
+      out.write("                            <div class=\"flex-footer\"  style=\"text-align: right; \"><a href=\"AboutUs.html\">About Us</a></div>\n");
+      out.write("                        </div>\n");
+      out.write("                     </div>\n");
+      out.write("                      <footer style=\"text-align: center; color: white; background-color: black;\">© 2024 ABC Company. All rights reserved.\n");
+      out.write("</footer>\n");
       out.write("        ");
       out.write("\n");
       out.write("       \n");
       out.write("       \n");
-      out.write("        </table>\n");
+      out.write("        \n");
       out.write("        <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>\n");
-      out.write("<script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js\"></script>\n");
-      out.write("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n");
+      out.write("        <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js\"></script>\n");
+      out.write("        <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n");
       out.write("</body>\n");
       out.write("    \n");
       out.write("</html>\n");
