@@ -80,49 +80,38 @@ public class Log extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+        String user=request.getParameter("uname");
+        String psw=request.getParameter("psw");
         try {
-        
-        String uname=request.getParameter("uname");
-        String pass=request.getParameter("psw");
-            
-        Class.forName("com.mysql.jdbc.Driver");
-        String url="jdbc:mysql://localhost:3306/mainDEA";
-        Connection con=DriverManager.getConnection(url, "root","");
-        Statement st=con.createStatement();
-        
-        
-        
-        String q2="SELECT * FROM Admin";
-        ResultSet rs2=st.executeQuery(q2);
-        while (rs2.next())
-        {
-            if (uname.equals(rs2.getString("Username")) && pass.equals(rs2.getString("Password")))
-            {
-                response.sendRedirect("AdminHome.html");
-            }
-        }
-        
-        String q1="SELECT * FROM Users";
-        ResultSet rs1=st.executeQuery(q1);
-        
-        while (rs1.next())
-        {
-            if(uname.equals(rs1.getString("FirstName")) && pass.equals(rs1.getString("Password")))
-            {
-                response.sendRedirect("Home.jsp");
-            }
-            
-        }
-        
-        
-        response.sendRedirect("Invalid.html");
-        
-        
-        } catch (SQLException | ClassNotFoundException ex) {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+        String url = "jdbc:mysql://localhost:3306/mainDEA";
+        try {
+            Connection con=DriverManager.getConnection(url,"root","");
+            Statement st1=con.createStatement();
+            String q1="SELECT * FROM Admin";
+            ResultSet rs1=st1.executeQuery(q1);
+            while (rs1.next()){
+                     if(user.equals(rs1.getString("Username")) && psw.equals(rs1.getString("Password")))
+                         {
+                             response.sendRedirect("AdminHome.html");
+                         }
+            }
+            
+            String q2="SELECT * FROM Users";
+            ResultSet rs2=st1.executeQuery(q2);
+            while (rs2.next()){
+            if (user.equals(rs2.getString("FirstName")) && psw.equals(rs2.getString("Password")))
+            {
+                response.sendRedirect("Home.jsp");
+            }}
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
