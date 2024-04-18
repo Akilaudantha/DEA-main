@@ -29,6 +29,10 @@
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <title>Home</title>
         <style>
+            .pimage{
+                width: 20px;
+                height: 10px;
+            }
         
         .menu {
             background-color: black;
@@ -93,6 +97,12 @@
         padding: 20px;
         border: 1px solid #ccc;
     }
+    .flex-footer{
+        flex: 2; 
+        
+        
+        
+    }
     .card {
         border: 1px solid #ccc;
         border-radius: 8px;
@@ -111,6 +121,11 @@
    
     .card p {
         margin-bottom: 0;
+    }
+    .footer{
+        height: 400px;
+        background-color: black;
+        width: 100%;
     }
         
     </style>
@@ -180,54 +195,82 @@
             
             <hr>
         
-            <table>
+            
                 <%
                     Class.forName("com.mysql.jdbc.Driver");
                     String url="jdbc:mysql://localhost:3306/mainDEA";
                     Connection con=DriverManager.getConnection(url,"root","");
-                    Statement st=con.createStatement();
-                    String q1="SELECT*FROM Shoes";
-                    ResultSet rs1=st.executeQuery(q1);
+                    Statement st1=con.createStatement();
                     
+                    String q1="SELECT*FROM Shoes";
+                    ResultSet rs1=st1.executeQuery(q1);
+                    Statement st2=con.createStatement();
+                    String q2="SELECT * FROM Clothes";
+                    ResultSet rs2=st2.executeQuery(q2);
                     int a=0;
-                    while(rs1.next())
-                    {%>
-                    <tr><td><%=rs1.getString("ItemName")%></td></tr>
-                  
-                        
-                    <%}
                     %>
-            </table>
-            <table>
-                <tr><td><div class="card">
-        <h3>Card Title 1</h3>
-        <p>This is some sample content inside the card. You can put any text or other HTML elements here.</p>
-                        </div></td>
-                        <td><div class="card">
-        <h3>Card Title 2</h3>
-        <p>This is some sample content inside the card. You can put any text or other HTML elements here.</p>
-                            </div></td>
-                            <td>  <div class="card">
-        <h3>Card Title 3</h3>
-        <p>This is some sample content inside the card. You can put any text or other HTML elements here.</p>
-                                </div></td>
-                                 <td>  <div class="card">
-        <h3>Card Title 3</h3>
-        <p>This is some sample content inside the card. You can put any text or other HTML elements here.</p>
-                                </div></td>
-                </tr>
-            </div>
-        
-            </table>
-        <table>
+                    
+                    <table>
+                        <tr>
+                            <%while(a < 2 && rs1.next() && rs2.next() )
+                     {%>
+                    
+                    <td><div class="card">
+                 <% 
+                byte[] imageData = rs1.getBytes("Image");
+                String base64Image = Base64.getEncoder().encodeToString(imageData);
+                
+                 %>
+                 <img src="data:image/png;base64,<%= base64Image %>" width="200" height="150" />
+                <center><h3><%=rs1.getString("ItemName") %></h3>
+                <p><%= rs1.getString("Description") %></p>
+                <h4>Rs.<%= rs1.getString("Price") %></h4>
+                <form action="Shoes.jsp">
+                    <button type="submit">View more</button></center>
+                </form>
+                </div></td>
 
+                    <td><div class="card">
+                 <% 
+                byte[] iData = rs2.getBytes("Image");
+                String base64 = Base64.getEncoder().encodeToString(iData);
+                 %>
+                 <img src="data:image/png;base64,<%= base64 %>" width="200" height="150" />
+                <center><h3><%= rs2.getString("ItemName") %></h3>
+                <p><%= rs2.getString("Description") %></p>
+                <h4>Rs.<%= rs2.getString("Price") %></h4>
+                <form action="Clothes.jsp">
+                    <button type="submit">View more</button></center>
+                </form>
+                </div></td>
+                    
+                     <% a++;  
+                    }
+                    %>
+                     </tr>
+                     
+                     </table>
+        </div>
+                     <div class="footer">
+                        <div class="flex-container">
+                            <div class="flex-footer"><a href="AboutUs.html">About Us</a><br>
+                                <p style="color:white;">Contact Us<br>
+                                <a href="#">Email Us</a><br>
+                                0112345678/0335869568</p>
+                            </div>
+                            <div class="flex-footer"  style="text-align:center;"><a href="AboutUs.html">About Us</a></div>
+                            <div class="flex-footer"  style="text-align: right; "><a href="AboutUs.html">About Us</a></div>
+                        </div>
+                     </div>
+                      <footer style="text-align: center; color: white; background-color: black;">© 2024 ABC Company. All rights reserved.
+</footer>
         <%--<%// Establish the connection to your database
         Class.forName("com.mysql.jdbc.Driver");
         String url="jdbc:mysql://localhost:3306/mainDEA";
         
         Connection conn = DriverManager.getConnection(url, "root", "");
         
-       
+        
         
         
         Statement s = conn.createStatement();
@@ -250,11 +293,10 @@
         }%>--%>
        
        
-        </table>
+        
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
     
 </html>
-
