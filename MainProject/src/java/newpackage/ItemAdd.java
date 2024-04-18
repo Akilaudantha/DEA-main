@@ -6,26 +6,29 @@
 package newpackage;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.Part;
+@MultipartConfig(maxFileSize = 16177215)
 /**
  *
  * @author Akila Udantha
  */
-@WebServlet(name = "Log", urlPatterns = {"/Log"})
-public class Log extends HttpServlet {
+@WebServlet(name = "ItemAdd", urlPatterns = {"/ItemAdd"})
+public class ItemAdd extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +47,10 @@ public class Log extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Log</title>");            
+            out.println("<title>Servlet ItemAdd</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Log at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ItemAdd at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -80,50 +83,56 @@ public class Log extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+         String inum=request.getParameter("inum");
+            String iname=request.getParameter("iname");
+            String iprice=request.getParameter("iprice");
+            String idescrip=request.getParameter("idescrip");
+            PrintWriter out=response.getWriter();
+            String type=request.getParameter("cat");
+          
         try {
-        
-        String uname=request.getParameter("uname");
-        String pass=request.getParameter("psw");
-            
         Class.forName("com.mysql.jdbc.Driver");
-        String url="jdbc:mysql://localhost:3306/mainDEA";
-        Connection con=DriverManager.getConnection(url, "root","");
-        Statement st=con.createStatement();
+    } catch (ClassNotFoundException ex) {
+        out.println("Error");
+    }
+
+        try{
+            String url = "jdbc:mysql://localhost:3306/mainDEA";
+            Connection conn = DriverManager.getConnection(url, "root", "");
+            Statement s=conn.createStatement();
+             Part iimage= request.getPart("iimage");
+            InputStream input = iimage.getInputStream();
         
-        
-        
-        String q2="SELECT * FROM Admin";
-        ResultSet rs2=st.executeQuery(q2);
-        while (rs2.next())
-        {
-            if (uname.equals(rs2.getString("Username")) && pass.equals(rs2.getString("Password")))
-            {
-                response.sendRedirect("AdminHome.html");
-            }
-        }
-        
-        String q1="SELECT * FROM Users";
-        ResultSet rs1=st.executeQuery(q1);
-        
-        while (rs1.next())
-        {
-            if(uname.equals(rs1.getString("FirstName")) && pass.equals(rs1.getString("Password")))
-            {
-                response.sendRedirect("Home.jsp");
-            }
+            if (type.equals("Shoe")){
+             String sql = "INSERT INTO Shoes VALUES ('"+inum+"','"+iname+"','"+iprice+"','"+idescrip+"',?)";
+             //s.executeUpdate(sql);
+             //String sql2 = "INSERT INTO Shoes(Image) VALUES (?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setBlob(1, input);
+
             
+            ps.executeUpdate();
+            }
+            else if (type.equals("Clothes")){
+            
+                String sql = "INSERT INTO Clothes VALUES ('"+inum+"','"+iname+"','"+iprice+"','"+idescrip+"',?)";
+             //s.executeUpdate(sql);
+             //String sql2 = "INSERT INTO Shoes(Image) VALUES (?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setBlob(1, input);
+
+            
+            ps.executeUpdate();
+                
+            }
+            response.sendRedirect("Home.jsp");
         }
+
+        catch (SQLException ex) {
         
-        
-        response.sendRedirect("Invalid.html");
-        
-        
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        
+        log("SQL error: " + ex.getMessage());
+        throw new ServletException("Database error", ex);
+    }
     }
 
     /**
