@@ -106,11 +106,13 @@
         
     }
     .card {
-        border: 1px solid #ccc;
+       
+        border: 0;
         border-radius: 8px;
         padding: 20px;
-        width: 235px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 295px;
+        height: 450px;
+       
         background-color: #fff;
         margin: 20px;
     }
@@ -125,7 +127,7 @@
         margin-bottom: 0;
     }
     .footer{
-        height: 400px;
+        height: 250px;
         background-color: black;
         width: 100%;
     }
@@ -146,28 +148,28 @@
             <li><a href="#">Help & Services</a></li>
             <li><a href="#">About Us</a></li>
             <li> <form action="search.jsp" method="post">
-                    <input type="text" name="search" class="search-input" placeholder="Search here ">
-                    <button type="submit" class="search-button">Search</button>
+                    <input style=" border: 0; background-color: #333333; color: #b3b3b3;"  type="text" name="search" class="search-input" placeholder="Search here ">
+                    <button type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#333333'; this.style.color='white';" class="search-button"  style=" background-color: #333333; border: 0; ">Search</button>
                 </form>
             </li>
             <li></li>
             <li><a href="Cart.jsp"><img src="Image/cart.png"  height="30" width="30"></a></li>
             <li><form action="index.html">
-                    <button type="submit" class="out-button">Sign Out</button>
+                    <button style=" background-color: #a2090c; border: 0; font-size: 12px; width: 70px; height: 35px; "  type="submit" class="out-button">Log Out</button>
                 </form>
             </li>
         </ul>
     </nav>
-    <br>
-    <br>
-    <div class="container">
+    
+    <div style=" background-color: black">
+    
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" height="500" width="550" src="Image/login.jpg" alt="First slide">
+                <img class="d-block w-100" height="100%" width="100%" src="Image/login.jpg" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" height="500" width="550" src="Image/form.jpg" alt="Second slide">
+                <img class="d-block w-100" height="100%" width="100%" src="Image/form.jpg" alt="Second slide">
             </div>
             <%--<div class="carousel-item">
                 <img class="d-block w-100" src="image3.jpg" alt="Third slide">
@@ -182,23 +184,23 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-        <br>
         
-        </div>
         
-        <br>
+    </div>
+        
+        
         <div style=" background-color: black;">
         <div class="container">
         <div class="flex-container">
-            <div class="flex-item" style=" border: 0;"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
+            <div class="flex-item" style=" border: 0;"><img  src="Image/form.jpg" width="100%" height="100%"></div>
             <div class="flex-item" style=" border: 0;"><br><br><h3 style=" text-align: center;">100% Sri Lankan</h3>
                 <p style=" text-align: center;">dgfiuoregfiolgjlsdhklg fghrfghdsfig riughoirehgiubsdflg ioghibfsdogbodsfgl</p></div>
         </div></div></div>
             <div class="flex-container">
-            <div class="flex-item"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
-            <div class="flex-item"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
+                <div class="flex-item" style=" border: 0;"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
+                <div class="flex-item" style=" border: 0;"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
 </div>
-            <div class="container">
+            
             <br>
             
             <hr>
@@ -229,12 +231,12 @@
                 String base64Image = Base64.getEncoder().encodeToString(imageData);
                 
                  %>
-                 <img src="data:image/png;base64,<%= base64Image %>" width="200" height="150" />
+                 <img src="data:image/png;base64,<%= base64Image %>" width="100%" height="100%" />
                 <center><h3><%=rs1.getString("ItemName") %></h3>
                 <p><%= rs1.getString("Description") %></p>
-                <h4>Rs.<%= rs1.getString("Price") %></h4>
+                <h5>Rs.<%= rs1.getString("Price") %></h5>
                 <form action="Shoes.jsp">
-                    <button style=" width: 100%; background-color: gray; font-weight: bold; " type="submit" onmousemove="this.style.backgroundColor = 'blue'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'gray'; this.style.color='black';">View more</button></center>
+                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">View more</button></center>
                 </form>
                 </div></td>
 
@@ -243,12 +245,12 @@
                 byte[] iData = rs2.getBytes("Image");
                 String base64 = Base64.getEncoder().encodeToString(iData);
                  %>
-                 <img src="data:image/png;base64,<%= base64 %>" width="200" height="150" />
+                 <img src="data:image/png;base64,<%= base64 %>" width="100%" height="100%" />
                 <center><h3><%= rs2.getString("ItemName") %></h3>
                 <p><%= rs2.getString("Description") %></p>
-                <h4>Rs.<%= rs2.getString("Price") %></h4>
+                <h5>Rs.<%= rs2.getString("Price") %></h5>
                 <form action="Clothes.jsp">
-                    <button style=" width: 100%; background-color: gray; font-weight: bold; " type="submit" onmousemove="this.style.backgroundColor = 'blue'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'gray'; this.style.color='black';">View more</button></center>
+                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">View more</button></center>
                 </form>
                 </div></td>
                     
@@ -268,12 +270,12 @@
                 String base64Image = Base64.getEncoder().encodeToString(imageData);
                 
                  %>
-                 <img src="data:image/png;base64,<%= base64Image %>" width="200" height="150" />
+                 <img src="data:image/png;base64,<%= base64Image %>" width="100%" height="100%" />
                 <center><h3><%=rs1.getString("ItemName") %></h3>
                 <p><%= rs1.getString("Description") %></p>
-                <h4>Rs.<%= rs1.getString("Price") %></h4>
+                <h5>Rs.<%= rs1.getString("Price") %></h5>
                 <form action="Shoes.jsp">
-                    <button style=" width: 100%; background-color: gray; font-weight: bold; " type="submit" onmousemove="this.style.backgroundColor = 'blue'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'gray'; this.style.color='black';">View more</button></center>
+                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">View more</button></center>
                 </form>
                 </div></td>
 
@@ -282,12 +284,12 @@
                 byte[] iData = rs2.getBytes("Image");
                 String base64 = Base64.getEncoder().encodeToString(iData);
                  %>
-                 <img src="data:image/png;base64,<%= base64 %>" width="200" height="150" />
+                 <img src="data:image/png;base64,<%= base64 %>" width="100%" height="100%" />
                 <center><h3><%= rs2.getString("ItemName") %></h3>
                 <p><%= rs2.getString("Description") %></p>
-                <h4>Rs.<%= rs2.getString("Price") %></h4>
+                <h5>Rs.<%= rs2.getString("Price") %></h5>
                 <form action="Clothes.jsp">
-                    <button style=" width: 100%; background-color: gray; font-weight: bold; " type="submit" onmousemove="this.style.backgroundColor = 'blue'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'gray'; this.style.color='black';">View more</button></center>
+                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">View more</button></center>
                 </form>
                 </div></td>
                     
@@ -297,16 +299,22 @@
                      </tr>
                      
                      </table>
-        </div>
+        
                      <div class="footer">
                         <div class="flex-container">
-                            <div class="flex-footer"><a href="AboutUs.html">About Us</a><br>
-                                <p style="color:white;">Contact Us<br>
-                                <a href="#">Email Us</a><br>
-                                0112345678/0335869568</p>
+                            <div class="flex-footer">
+                                <div class=" container"><br>
+                                    <br>
+                                    <div  style=" padding-left: 20px;">
+                                    <a href="AboutUs.html">About Us</a><br><br>
+                                    <p style="color:white;">Contact Us<br><br>
+                                        <a href="#">Email Us</a><br><br>
+                                        0112345678 / 0335869568</p></div></div>
                             </div>
-                            <div class="flex-footer"  style="text-align:center;"><a href="AboutUs.html">About Us</a></div>
-                            <div class="flex-footer"  style="text-align: right; "><a href="AboutUs.html">About Us</a></div>
+                            <div class="flex-footer"  style="text-align:center;"><div class=" container"><br>
+                                    <br><br><img src="Image/login.jpg" width="200px" height="100px"></div></div>
+                            <div class="flex-footer"  style="text-align: right; "><div class=" container"><div  style=" padding-right: 20px;"><br>
+                                        <br><a href="AboutUs.html">About Us</a></div></div></div>
                         </div>
                      </div>
                       <footer style="text-align: center; color: white; background-color: black;">© 2024 ABC Company. All rights reserved.

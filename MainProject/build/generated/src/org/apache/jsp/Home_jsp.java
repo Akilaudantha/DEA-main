@@ -61,7 +61,12 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\" rel=\"stylesheet\">\r\n");
       out.write("        <title>Home</title>\r\n");
+      out.write("        \r\n");
       out.write("        <style>\r\n");
+      out.write("            .pimage{\r\n");
+      out.write("                width: 20px;\r\n");
+      out.write("                height: 10px;\r\n");
+      out.write("            }\r\n");
       out.write("        \r\n");
       out.write("        .menu {\r\n");
       out.write("            background-color: black;\r\n");
@@ -117,6 +122,48 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            background-color: black;\r\n");
       out.write("            color: #fff;\r\n");
       out.write("        }\r\n");
+      out.write("        .flex-container {\r\n");
+      out.write("        display: flex;\r\n");
+      out.write("    }\r\n");
+      out.write("    .flex-item {\r\n");
+      out.write("        flex: 1; /* Divide into two equal parts */\r\n");
+      out.write("        background-color: black;\r\n");
+      out.write("        color: white;\r\n");
+      out.write("        padding: 20px;\r\n");
+      out.write("        border: 1px solid #ccc;\r\n");
+      out.write("    }\r\n");
+      out.write("    .flex-footer{\r\n");
+      out.write("        flex: 2; \r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("    }\r\n");
+      out.write("    .card {\r\n");
+      out.write("       \r\n");
+      out.write("        border: 0;\r\n");
+      out.write("        border-radius: 8px;\r\n");
+      out.write("        padding: 20px;\r\n");
+      out.write("        width: 295px;\r\n");
+      out.write("        height: 450px;\r\n");
+      out.write("       \r\n");
+      out.write("        background-color: #fff;\r\n");
+      out.write("        margin: 20px;\r\n");
+      out.write("    }\r\n");
+      out.write("\r\n");
+      out.write("  \r\n");
+      out.write("    .card h3 {\r\n");
+      out.write("        margin-top: 0;\r\n");
+      out.write("    }\r\n");
+      out.write("\r\n");
+      out.write("   \r\n");
+      out.write("    .card p {\r\n");
+      out.write("        margin-bottom: 0;\r\n");
+      out.write("    }\r\n");
+      out.write("    .footer{\r\n");
+      out.write("        height: 400px;\r\n");
+      out.write("        background-color: black;\r\n");
+      out.write("        width: 100%;\r\n");
+      out.write("    }\r\n");
       out.write("        \r\n");
       out.write("    </style>\r\n");
       out.write("</head>\r\n");
@@ -124,7 +171,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <nav class=\"menu\">\r\n");
       out.write("        <ul>\r\n");
       out.write("            <li><a href=\"Home.jsp\"><img src=\"Image/login.jpg\" height=\"50\" width=\"50\"></a></li>\r\n");
-      out.write("            <li>Category\r\n");
+      out.write("            <li>\r\n");
       out.write("                <select class=\"categ\">\r\n");
       out.write("                    <option disabled style=\"color: gray;\">Select Category</option>\r\n");
       out.write("                    <option>Shoes</option>\r\n");
@@ -134,28 +181,28 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <li><a href=\"#\">Help & Services</a></li>\r\n");
       out.write("            <li><a href=\"#\">About Us</a></li>\r\n");
       out.write("            <li> <form action=\"search.jsp\" method=\"post\">\r\n");
-      out.write("                    <input type=\"text\" name=\"search\" class=\"search-input\" placeholder=\"Search here \">\r\n");
-      out.write("                    <button type=\"submit\" class=\"search-button\">Search</button>\r\n");
+      out.write("                    <input style=\" border: 0; background-color: #333333; color: #b3b3b3;\"  type=\"text\" name=\"search\" class=\"search-input\" placeholder=\"Search here \">\r\n");
+      out.write("                    <button type=\"submit\" onmousemove=\"this.style.backgroundColor = '#2a38ec'; this.style.color='white';\" onmouseout=\"this.style.backgroundColor = '#333333'; this.style.color='white';\" class=\"search-button\"  style=\" background-color: #333333; border: 0; \">Search</button>\r\n");
       out.write("                </form>\r\n");
       out.write("            </li>\r\n");
       out.write("            <li></li>\r\n");
       out.write("            <li><a href=\"Cart.jsp\"><img src=\"Image/cart.png\"  height=\"30\" width=\"30\"></a></li>\r\n");
       out.write("            <li><form action=\"index.html\">\r\n");
-      out.write("                    <button type=\"submit\" class=\"out-button\">Sign Out</button>\r\n");
+      out.write("                    <button style=\" background-color: #a2090c; border: 0; font-size: 12px; width: 70px; height: 35px; \"  type=\"submit\" class=\"out-button\">Log Out</button>\r\n");
       out.write("                </form>\r\n");
       out.write("            </li>\r\n");
       out.write("        </ul>\r\n");
       out.write("    </nav>\r\n");
-      out.write("    <br>\r\n");
-      out.write("    <br>\r\n");
-      out.write("    <div class=\"container\">\r\n");
+      out.write("    \r\n");
+      out.write("    <div style=\" background-color: black\">\r\n");
+      out.write("    \r\n");
       out.write("    <div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\">\r\n");
       out.write("        <div class=\"carousel-inner\">\r\n");
       out.write("            <div class=\"carousel-item active\">\r\n");
-      out.write("                <img class=\"d-block w-100\" height=\"400\" width=\"550\" src=\"Image/login.jpg\" alt=\"First slide\">\r\n");
+      out.write("                <img class=\"d-block w-100\" height=\"100%\" width=\"100%\" src=\"Image/login.jpg\" alt=\"First slide\">\r\n");
       out.write("            </div>\r\n");
       out.write("            <div class=\"carousel-item\">\r\n");
-      out.write("                <img class=\"d-block w-100\" height=\"400\" width=\"550\" src=\"Image/form.jpg\" alt=\"Second slide\">\r\n");
+      out.write("                <img class=\"d-block w-100\" height=\"100%\" width=\"100%\" src=\"Image/form.jpg\" alt=\"Second slide\">\r\n");
       out.write("            </div>\r\n");
       out.write("            ");
       out.write("\r\n");
@@ -168,44 +215,202 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\r\n");
       out.write("            <span class=\"sr-only\">Next</span>\r\n");
       out.write("        </a>\r\n");
-      out.write("    </div></div>\r\n");
-      out.write("        <table>\r\n");
+      out.write("    </div>\r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("    </div>\r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("        <div style=\" background-color: black;\">\r\n");
+      out.write("        <div class=\"container\">\r\n");
+      out.write("        <div class=\"flex-container\">\r\n");
+      out.write("            <div class=\"flex-item\" style=\" border: 0;\"><img  src=\"Image/form.jpg\" width=\"100%\" height=\"100%\"></div>\r\n");
+      out.write("            <div class=\"flex-item\" style=\" border: 0;\"><br><br><h3 style=\" text-align: center;\">100% Sri Lankan</h3>\r\n");
+      out.write("                <p style=\" text-align: center;\">dgfiuoregfiolgjlsdhklg fghrfghdsfig riughoirehgiubsdflg ioghibfsdogbodsfgl</p></div>\r\n");
+      out.write("        </div></div></div>\r\n");
+      out.write("            <div class=\"flex-container\">\r\n");
+      out.write("                <div class=\"flex-item\" style=\" border: 0;\"><a href=\"Shoes.jsp\"><img  src=\"Image/form.jpg\" width=\"100%\" height=\"100%\"></a></div>\r\n");
+      out.write("                <div class=\"flex-item\" style=\" border: 0;\"><a href=\"Shoes.jsp\"><img  src=\"Image/form.jpg\" width=\"100%\" height=\"100%\"></a></div>\r\n");
+      out.write("</div>\r\n");
+      out.write("            \r\n");
+      out.write("            <br>\r\n");
+      out.write("            \r\n");
+      out.write("            <hr>\r\n");
+      out.write("        \r\n");
+      out.write("            \r\n");
+      out.write("                ");
+
+                    Class.forName("com.mysql.jdbc.Driver");
+                    String url="jdbc:mysql://localhost:3306/mainDEA";
+                    Connection con=DriverManager.getConnection(url,"root","");
+                    Statement st1=con.createStatement();
+                    
+                    String q1="SELECT*FROM Shoes";
+                    ResultSet rs1=st1.executeQuery(q1);
+                    Statement st2=con.createStatement();
+                    String q2="SELECT * FROM Clothes";
+                    ResultSet rs2=st2.executeQuery(q2);
+                    int a=0;
+                    
       out.write("\r\n");
+      out.write("                    \r\n");
+      out.write("                    <table>\r\n");
+      out.write("                        <tr>\r\n");
+      out.write("                            ");
+while(a < 2 && rs1.next() && rs2.next() )
+                     {
+      out.write("\r\n");
+      out.write("                    \r\n");
+      out.write("                    <td><div class=\"card\"  onmousemove=\"this.style.backgroundColor='black'; this.style.color='white';\" onmouseout=\"this.style.backgroundColor = 'white';this.style.color='black';\" >\r\n");
+      out.write("                 ");
+ 
+                byte[] imageData = rs1.getBytes("Image");
+                String base64Image = Base64.getEncoder().encodeToString(imageData);
+                
+                 
+      out.write("\r\n");
+      out.write("                 <img src=\"data:image/png;base64,");
+      out.print( base64Image );
+      out.write("\" width=\"100%\" height=\"100%\" />\r\n");
+      out.write("                <center><h3>");
+      out.print(rs1.getString("ItemName") );
+      out.write("</h3>\r\n");
+      out.write("                <p>");
+      out.print( rs1.getString("Description") );
+      out.write("</p>\r\n");
+      out.write("                <h4>Rs.");
+      out.print( rs1.getString("Price") );
+      out.write("</h4>\r\n");
+      out.write("                <form action=\"Shoes.jsp\">\r\n");
+      out.write("                    <button style=\" width: 100%; background-color: gray; font-weight: bold; border: 0; \" type=\"submit\" onmousemove=\"this.style.backgroundColor = '#2a38ec'; this.style.color='white';\" onmouseout=\"this.style.backgroundColor = 'gray'; this.style.color='black';\">View more</button></center>\r\n");
+      out.write("                </form>\r\n");
+      out.write("                </div></td>\r\n");
+      out.write("\r\n");
+      out.write("                <td><div class=\"card\"  onmousemove=\"this.style.backgroundColor='black'; this.style.color='white';\" onmouseout=\"this.style.backgroundColor = 'white';this.style.color='black';\">\r\n");
+      out.write("                 ");
+ 
+                byte[] iData = rs2.getBytes("Image");
+                String base64 = Base64.getEncoder().encodeToString(iData);
+                 
+      out.write("\r\n");
+      out.write("                 <img src=\"data:image/png;base64,");
+      out.print( base64 );
+      out.write("\" width=\"100%\" height=\"100%\" />\r\n");
+      out.write("                <center><h3>");
+      out.print( rs2.getString("ItemName") );
+      out.write("</h3>\r\n");
+      out.write("                <p>");
+      out.print( rs2.getString("Description") );
+      out.write("</p>\r\n");
+      out.write("                <h4>Rs.");
+      out.print( rs2.getString("Price") );
+      out.write("</h4>\r\n");
+      out.write("                <form action=\"Clothes.jsp\">\r\n");
+      out.write("                    <button style=\" width: 100%; background-color: gray; font-weight: bold; border: 0; \" type=\"submit\" onmousemove=\"this.style.backgroundColor = '#2a38ec'; this.style.color='white';\" onmouseout=\"this.style.backgroundColor = 'gray'; this.style.color='black';\">View more</button></center>\r\n");
+      out.write("                </form>\r\n");
+      out.write("                </div></td>\r\n");
+      out.write("                    \r\n");
+      out.write("                     ");
+ a++;  
+                    }
+                    
+      out.write("\r\n");
+      out.write("                     </tr>\r\n");
+      out.write("                     \r\n");
+      out.write("                     ");
+a=0;
+      out.write("\r\n");
+      out.write("                     <tr>\r\n");
+      out.write("                           ");
+while(a < 2 && rs1.next() && rs2.next() )
+                     {
+      out.write("\r\n");
+      out.write("                    \r\n");
+      out.write("                    <td><div class=\"card\"  onmousemove=\"this.style.backgroundColor='black'; this.style.color='white';\" onmouseout=\"this.style.backgroundColor = 'white';this.style.color='black';\" >\r\n");
+      out.write("                 ");
+ 
+                byte[] imageData = rs1.getBytes("Image");
+                String base64Image = Base64.getEncoder().encodeToString(imageData);
+                
+                 
+      out.write("\r\n");
+      out.write("                 <img src=\"data:image/png;base64,");
+      out.print( base64Image );
+      out.write("\" width=\"100%\" height=\"100%\" />\r\n");
+      out.write("                <center><h3>");
+      out.print(rs1.getString("ItemName") );
+      out.write("</h3>\r\n");
+      out.write("                <p>");
+      out.print( rs1.getString("Description") );
+      out.write("</p>\r\n");
+      out.write("                <h4>Rs.");
+      out.print( rs1.getString("Price") );
+      out.write("</h4>\r\n");
+      out.write("                <form action=\"Shoes.jsp\">\r\n");
+      out.write("                    <button style=\" width: 100%; background-color: gray; font-weight: bold; border: 0; \" type=\"submit\" onmousemove=\"this.style.backgroundColor = '#2a38ec'; this.style.color='white';\" onmouseout=\"this.style.backgroundColor = 'gray'; this.style.color='black';\">View more</button></center>\r\n");
+      out.write("                </form>\r\n");
+      out.write("                </div></td>\r\n");
+      out.write("\r\n");
+      out.write("                <td><div class=\"card\"  onmousemove=\"this.style.backgroundColor='black'; this.style.color='white';\" onmouseout=\"this.style.backgroundColor = 'white';this.style.color='black';\">\r\n");
+      out.write("                 ");
+ 
+                byte[] iData = rs2.getBytes("Image");
+                String base64 = Base64.getEncoder().encodeToString(iData);
+                 
+      out.write("\r\n");
+      out.write("                 <img src=\"data:image/png;base64,");
+      out.print( base64 );
+      out.write("\" width=\"100%\" height=\"100%\" />\r\n");
+      out.write("                <center><h3>");
+      out.print( rs2.getString("ItemName") );
+      out.write("</h3>\r\n");
+      out.write("                <p>");
+      out.print( rs2.getString("Description") );
+      out.write("</p>\r\n");
+      out.write("                <h4>Rs.");
+      out.print( rs2.getString("Price") );
+      out.write("</h4>\r\n");
+      out.write("                <form action=\"Clothes.jsp\">\r\n");
+      out.write("                    <button style=\" width: 100%; background-color: gray; font-weight: bold; border: 0; \" type=\"submit\" onmousemove=\"this.style.backgroundColor = '#2a38ec'; this.style.color='white';\" onmouseout=\"this.style.backgroundColor = 'gray'; this.style.color='black';\">View more</button></center>\r\n");
+      out.write("                </form>\r\n");
+      out.write("                </div></td>\r\n");
+      out.write("                    \r\n");
+      out.write("                     ");
+ a++;  
+                    }
+                    
+      out.write("\r\n");
+      out.write("                     </tr>\r\n");
+      out.write("                     \r\n");
+      out.write("                     </table>\r\n");
+      out.write("        \r\n");
+      out.write("                     <div class=\"footer\">\r\n");
+      out.write("                        <div class=\"flex-container\">\r\n");
+      out.write("                            <div class=\"flex-footer\">\r\n");
+      out.write("                                <div class=\" container\"><br>\r\n");
+      out.write("                                    <br>\r\n");
+      out.write("                                    \r\n");
+      out.write("                                    <a href=\"AboutUs.html\">About Us</a><br><br>\r\n");
+      out.write("                                    <p style=\"color:white;\">Contact Us<br><br>\r\n");
+      out.write("                                        <a href=\"#\">Email Us</a><br><br>\r\n");
+      out.write("                                0112345678 / 0335869568</p></div>\r\n");
+      out.write("                            </div>\r\n");
+      out.write("                            <div class=\"flex-footer\"  style=\"text-align:center;\"><div class=\" container\"><br>\r\n");
+      out.write("                                    <br><a href=\"AboutUs.html\">About Us</a></div></div>\r\n");
+      out.write("                            <div class=\"flex-footer\"  style=\"text-align: right; \"><div class=\" container\"><br>\r\n");
+      out.write("                                    <br><a href=\"AboutUs.html\">About Us</a></div></div>\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                     </div>\r\n");
+      out.write("                      <footer style=\"text-align: center; color: white; background-color: black;\">© 2024 ABC Company. All rights reserved.\r\n");
+      out.write("</footer>\r\n");
       out.write("        ");
-// Establish the connection to your database
-        Class.forName("com.mysql.jdbc.Driver");
-        String url="jdbc:mysql://localhost:3306/mainDEA";
-        
-        Connection conn = DriverManager.getConnection(url, "root", "");
-        
-        // Get the image file from the request
-        
-        
-        Statement s = conn.createStatement();
-        // Prepare the SQL statement to insert the image into the database
-        String sql = "SELECT * FROM Clothes";
-        
-        ResultSet rs=s.executeQuery(sql);
-        
-        while (rs.next())
-        {
-            
-        byte[] imageData = rs.getBytes("Image");
-        
-       
-        String base64Image = Base64.getEncoder().encodeToString(imageData);
-        
-         
-        out.println("<tr><td><img src=\"data:image/png;base64," + base64Image + "\" /></td></tr>");
-        
-        }
       out.write("\r\n");
       out.write("       \r\n");
       out.write("       \r\n");
-      out.write("        </table>\r\n");
+      out.write("        \r\n");
       out.write("        <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>\r\n");
-      out.write("<script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js\"></script>\r\n");
-      out.write("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\r\n");
+      out.write("        <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js\"></script>\r\n");
+      out.write("        <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\r\n");
       out.write("</body>\r\n");
       out.write("    \r\n");
       out.write("</html>\r\n");
