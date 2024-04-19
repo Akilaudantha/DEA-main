@@ -108,7 +108,7 @@ public class Log extends HttpServlet {
             {
                 response.sendRedirect("Home.jsp");
             }}
-            
+            response.sendRedirect("Invalid.html");
         } catch (SQLException ex) {
             Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
         }
