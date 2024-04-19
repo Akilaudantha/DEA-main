@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1116177215)
 /**
  *
  * @author Akila Udantha

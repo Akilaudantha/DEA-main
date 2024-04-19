@@ -28,6 +28,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <title>Home</title>
+        
         <style>
             .pimage{
                 width: 20px;
@@ -93,7 +94,8 @@
     }
     .flex-item {
         flex: 1; /* Divide into two equal parts */
-        background-color: white;
+        background-color: black;
+        color: white;
         padding: 20px;
         border: 1px solid #ccc;
     }
@@ -185,12 +187,18 @@
         </div>
         
         <br>
-        
+        <div style=" background-color: black;">
         <div class="container">
         <div class="flex-container">
-            <div class="flex-item"><a href="Shoes.jsp"><img src="Image/form.jpg" width="515" height="200"></a></div>
-            <div class="flex-item"><a href="Clothes.jsp"><img src="Image/login.jpg" width="515" height="200"></a></div>
+            <div class="flex-item" style=" border: 0;"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
+            <div class="flex-item" style=" border: 0;"><br><br><h3 style=" text-align: center;">100% Sri Lankan</h3>
+                <p style=" text-align: center;">dgfiuoregfiolgjlsdhklg fghrfghdsfig riughoirehgiubsdflg ioghibfsdogbodsfgl</p></div>
+        </div></div></div>
+            <div class="flex-container">
+            <div class="flex-item"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
+            <div class="flex-item"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
 </div>
+            <div class="container">
             <br>
             
             <hr>
@@ -215,7 +223,7 @@
                             <%while(a < 2 && rs1.next() && rs2.next() )
                      {%>
                     
-                    <td><div class="card">
+                    <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';" >
                  <% 
                 byte[] imageData = rs1.getBytes("Image");
                 String base64Image = Base64.getEncoder().encodeToString(imageData);
@@ -226,11 +234,11 @@
                 <p><%= rs1.getString("Description") %></p>
                 <h4>Rs.<%= rs1.getString("Price") %></h4>
                 <form action="Shoes.jsp">
-                    <button type="submit">View more</button></center>
+                    <button style=" width: 100%; background-color: gray; font-weight: bold; " type="submit" onmousemove="this.style.backgroundColor = 'blue'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'gray'; this.style.color='black';">View more</button></center>
                 </form>
                 </div></td>
 
-                    <td><div class="card">
+                <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';">
                  <% 
                 byte[] iData = rs2.getBytes("Image");
                 String base64 = Base64.getEncoder().encodeToString(iData);
@@ -240,7 +248,46 @@
                 <p><%= rs2.getString("Description") %></p>
                 <h4>Rs.<%= rs2.getString("Price") %></h4>
                 <form action="Clothes.jsp">
-                    <button type="submit">View more</button></center>
+                    <button style=" width: 100%; background-color: gray; font-weight: bold; " type="submit" onmousemove="this.style.backgroundColor = 'blue'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'gray'; this.style.color='black';">View more</button></center>
+                </form>
+                </div></td>
+                    
+                     <% a++;  
+                    }
+                    %>
+                     </tr>
+                     
+                     <%a=0;%>
+                     <tr>
+                           <%while(a < 2 && rs1.next() && rs2.next() )
+                     {%>
+                    
+                    <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';" >
+                 <% 
+                byte[] imageData = rs1.getBytes("Image");
+                String base64Image = Base64.getEncoder().encodeToString(imageData);
+                
+                 %>
+                 <img src="data:image/png;base64,<%= base64Image %>" width="200" height="150" />
+                <center><h3><%=rs1.getString("ItemName") %></h3>
+                <p><%= rs1.getString("Description") %></p>
+                <h4>Rs.<%= rs1.getString("Price") %></h4>
+                <form action="Shoes.jsp">
+                    <button style=" width: 100%; background-color: gray; font-weight: bold; " type="submit" onmousemove="this.style.backgroundColor = 'blue'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'gray'; this.style.color='black';">View more</button></center>
+                </form>
+                </div></td>
+
+                <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';">
+                 <% 
+                byte[] iData = rs2.getBytes("Image");
+                String base64 = Base64.getEncoder().encodeToString(iData);
+                 %>
+                 <img src="data:image/png;base64,<%= base64 %>" width="200" height="150" />
+                <center><h3><%= rs2.getString("ItemName") %></h3>
+                <p><%= rs2.getString("Description") %></p>
+                <h4>Rs.<%= rs2.getString("Price") %></h4>
+                <form action="Clothes.jsp">
+                    <button style=" width: 100%; background-color: gray; font-weight: bold; " type="submit" onmousemove="this.style.backgroundColor = 'blue'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'gray'; this.style.color='black';">View more</button></center>
                 </form>
                 </div></td>
                     
