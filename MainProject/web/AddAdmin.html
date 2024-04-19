@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Add Admin Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('Image/login.jpg');
+            background-size: cover;
+        }
+
+        form {
+            background-image: url('Image/form.jpg');
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            width: 120px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            font-size: 12px;
+            color: white;
+        }
+        input {
+            text-align: center;
+            
+        }
+        h2{
+            color: white;
+            font-family: Helvetica;
+        }
+        
+    </style>
+    <script>
+        function x()
+        {
+            if (!(document.fn.pass.value===document.fn.rpass.value))
+            {
+                alert("Re check your passwords");
+                return false;
+            }
+            
+        }
+        </script>
+    </head>
+    <body>
+        
+        <form name="fn" action="addadmin" method="post">
+            <h2>New Admin Form</h2>
+            <table>
+                <tr><td><input type="text" name="uname" placeholder="Username"></td></tr>
+                <tr><td><input type="password" name="pass" placeholder="Password"></td></tr>
+                <tr><td><input type="password" name="rpass" placeholder="Re-Enter Password"></td></tr>
+                <tr><td><button type="submit" onclick="return x()">Add</button></td></tr>
+            </table>
+        </form>
+            
+    </body>
+</html>
