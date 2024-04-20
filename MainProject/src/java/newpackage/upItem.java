@@ -6,18 +6,23 @@
 package newpackage;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+@MultipartConfig(maxFileSize = 1116177215)
 
 /**
  *
@@ -88,6 +93,11 @@ public class upItem extends HttpServlet {
             String iprice=request.getParameter("iprice");
             String ide=request.getParameter("ide");
             
+            String cimg=request.getParameter("im");
+            
+            Part iimage= request.getPart("image");
+            InputStream input = iimage.getInputStream();
+            
             Class.forName("com.mysql.jdbc.Driver");
             String url="jdbc:mysql://localhost:3306/mainDEA";
             Connection con=DriverManager.getConnection(url, "root", "");
@@ -99,6 +109,17 @@ public class upItem extends HttpServlet {
                 {
                     String q1="UPDATE Shoes SET ItemName='"+iname+"',Price='"+iprice+"',Description='"+ide+"' WHERE ItemNum='"+icode+"'";
                     st.executeUpdate(q1);
+                    
+                    if (cimg.equals("yes"))
+                    {
+                    String sql = "UPDATE Shoes SET Image=? WHERE ItemNum='"+icode+"'";
+             
+                    PreparedStatement ps = con.prepareStatement(sql);
+                    ps.setBlob(1, input);
+            
+                    ps.executeUpdate();
+                    
+                    }
                     response.sendRedirect("Update.jsp");
                 }
                 else if(up.equals("delete"))
@@ -107,6 +128,7 @@ public class upItem extends HttpServlet {
                     st.executeUpdate(q2);
                     response.sendRedirect("Update.jsp");
                 }
+                
             }
             
             else if(cat.equals("Clothes"))
@@ -115,6 +137,17 @@ public class upItem extends HttpServlet {
                 {
                     String q3="UPDATE Clothes SET ItemName='"+iname+"',Price='"+iprice+"',Description='"+ide+"' WHERE ItemNum='"+icode+"'";
                     st.executeUpdate(q3);
+                    
+                    if (cimg.equals("yes"))
+                {
+                    String sql = "UPDATE Clothes SET Image=? WHERE ItemNum='"+icode+"'";
+             
+                    PreparedStatement ps = con.prepareStatement(sql);
+                    ps.setBlob(1, input);
+            
+                    ps.executeUpdate();
+                    
+                }
                     response.sendRedirect("Update.jsp");
                 }
                 else if(up.equals("delete"))
@@ -123,10 +156,11 @@ public class upItem extends HttpServlet {
                     st.executeUpdate(q4);
                     response.sendRedirect("Update.jsp");
                 }
+                
             }
             
         } catch (Exception ex) {
-            Logger.getLogger(upItem.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(siup.class.getName()).log(Level.SEVERE, null, ex);
         } 
         
         

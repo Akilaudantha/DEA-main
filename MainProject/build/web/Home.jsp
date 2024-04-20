@@ -198,7 +198,7 @@
         </div></div></div>
             <div class="flex-container">
                 <div class="flex-item" style=" border: 0;"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
-                <div class="flex-item" style=" border: 0;"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
+                <div class="flex-item" style=" border: 0;"><a href="Clothes.jsp"><img  src="Image/login.jpg" width="100%" height="100%"></a></div>
 </div>
             
             <br>
