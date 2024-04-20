@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -24,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Akila Udantha
  */
-@WebServlet(name = "Log", urlPatterns = {"/Log"})
-public class Log extends HttpServlet {
+@WebServlet(name = "upItem", urlPatterns = {"/upItem"})
+public class upItem extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +43,10 @@ public class Log extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Log</title>");            
+            out.println("<title>Servlet upItem</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Log at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet upItem at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -81,42 +80,55 @@ public class Log extends HttpServlet {
             throws ServletException, IOException {
         try {
             //processRequest(request, response);
-            String user=request.getParameter("uname");
-            String psw=request.getParameter("psw");
+            String icode=request.getParameter("icode");
+            String cat=request.getParameter("cat");
+            String up=request.getParameter("update");
+            
+            String iname=request.getParameter("iname");
+            String iprice=request.getParameter("iprice");
+            String ide=request.getParameter("ide");
             
             Class.forName("com.mysql.jdbc.Driver");
             String url="jdbc:mysql://localhost:3306/mainDEA";
-            Connection con=DriverManager.getConnection(url,"root","");
+            Connection con=DriverManager.getConnection(url, "root", "");
             Statement st=con.createStatement();
             
-            String q1="SELECT * FROM Admin";
-            ResultSet rs1=st.executeQuery(q1);
-            while (rs1.next() )
-            { if (user.equals(rs1.getString("Username")) && psw.equals(rs1.getString("Password")))
+            if(cat.equals("Shoes"))
             {
-                response.sendRedirect("AdminHome.html");
-            }
-            }
-            
-            String q2="SELECT * FROM Users";
-            ResultSet rs2=st.executeQuery(q2);
-            while (rs2.next())
-            {
-                if(user.equals(rs2.getString("FirstName")) && psw.equals(rs2.getString("Password")))
+                if(up.equals("update"))
                 {
-                    response.sendRedirect("Home.jsp");
+                    String q1="UPDATE Shoes SET ItemName='"+iname+"',Price='"+iprice+"',Description='"+ide+"' WHERE ItemNum='"+icode+"'";
+                    st.executeUpdate(q1);
+                    response.sendRedirect("Update.jsp");
+                }
+                else if(up.equals("delete"))
+                {
+                    String q2="DELETE FROM Shoes WHERE ItemNum='"+icode+"'";
+                    st.executeUpdate(q2);
+                    response.sendRedirect("Update.jsp");
                 }
             }
             
+            else if(cat.equals("Clothes"))
+            {
+                if(up.equals("update"))
+                {
+                    String q3="UPDATE Clothes SET ItemName='"+iname+"',Price='"+iprice+"',Description='"+ide+"' WHERE ItemNum='"+icode+"'";
+                    st.executeUpdate(q3);
+                    response.sendRedirect("Update.jsp");
+                }
+                else if(up.equals("delete"))
+                {
+                    String q4="DELETE FROM Clothes WHERE ItemNum='"+icode+"'";
+                    st.executeUpdate(q4);
+                    response.sendRedirect("Update.jsp");
+                }
+            }
             
-            response.sendRedirect("Invalid.html");
         } catch (Exception ex) {
-            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(upItem.class.getName()).log(Level.SEVERE, null, ex);
         } 
         
-            
-            
-            
         
     }
 

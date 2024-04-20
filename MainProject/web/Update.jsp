@@ -36,12 +36,19 @@
         button:hover {
             background-color: #0056b3;
         }
+        
+        thead{
+            background-color: black;
+            color: white;
+            font-weight: bold;
+        }
             
         </style>
     </head>
     <body>
-        <h2 style=" text-align: center; font-weight: bold; color: red;">Shoes Table</h2>
-        <table border="1" style="width: 100%; height: 100%" >
+        
+        <h1 style=" text-align: center; font-weight: bold; color: red;">Shoes Table</h1>
+        <table border="1" style="width: 100%; height: 100%; border-collapse: collapse;" >
             <thead><th>Item Number</th><th>Item Name</th><th>Price</th><th>Description</th></thead>
         <%
             Class.forName("com.mysql.jdbc.Driver");
@@ -56,8 +63,8 @@
             <%}%>
         </table>
         
-        <h2 style=" text-align: center; font-weight: bold; color: red;">Clothes Table</h2>
-        <table border="1" style="width: 100%; height: 100%" >
+        <h1 style=" text-align: center; font-weight: bold; color: red;">Clothes Table</h1>
+        <table border="1" style="width: 100%; height: 100%; border-collapse: collapse;" >
             <thead><th>Item Number</th><th>Item Name</th><th>Price</th><th>Description</th></thead>
             <%
                 Statement st2=con.createStatement();
@@ -71,18 +78,18 @@
         
     <div class="b">
             
-            <center> <form action="upItem" method="post" style="  width: 400px; background-color: white;"><hr style=" width: 400px; height: 5px; background-color: black; "><h1 style="text-align: center;">Update Form</h1>
+            <center> <form action="upItem" method="post" style="  width: 400px; background-color: white;"><hr style=" width: 400px; height: 5px; background-color: black; "><h1 style="text-align: center; color: red;">Update Form</h1>
             <table>
-                <tr><td><label>Select Item Category</label></td><td><select name="cat"><option value="Shoe">Shoes</option>
+                <tr><td><label>Select Item Category</label></td><td><select name="cat"><option value="Shoes">Shoes</option>
                                                                                        <option value="Clothes">Cloths</option>
                                                                     </select></td></tr>
                 
                 <tr><td><label>Enter Item Code</label></td><td><input type="text" name="icode"></td></tr>
                 
-                <tr><td><label>What do you want to do</label></td><td><select name="update"><option value="up">Update</option>
-                                                                                        <option value="del">Delete</option>
+                <tr><td><label>What do you want to do</label></td><td><select name="update"><option value="update">Update</option>
+                                                                                        <option value="delete">Delete</option>
                         </select></td></tr>
-                <tr><td><button type="submit">Delete</button></td><td><button type="reset">Reset</button></td></tr>
+                
             </table>
                 
                     <h4>If you want to update data please fill all this form</h4>
@@ -91,9 +98,11 @@
                         <tr><td><label>New Item Name</label></td><td><input type="text" name="iname"></td></tr>
                         <tr><td><label>New Item Price</label></td><td><input type="text" name="iprice"></td></tr>
                         <tr><td><label>New Item Description</label></td><td><textarea name="ide"></textarea></td></tr>
-                        <tr><td><button type="submit">Update</button></td><td><button type="reset">Reset</button></td></tr>
+                        <tr><td style="padding-left: 25px; padding-top: 10px;"><button type="submit">Update</button></td><td style="padding-left: 25px; padding-top: 10px;"><button type="reset">Reset</button></td></tr>
+                       
                     </table>
-               <br> <hr style=" width: 400px; height: 5px; background-color: black; "></form></center>
+                    <h3><a href="AdminHome.html">Back</a></h3>
+                    <br><hr style=" width: 400px; height: 5px; background-color: black; "></form></center><br>
         </div>
         
         
