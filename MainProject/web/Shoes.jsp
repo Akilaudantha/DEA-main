@@ -93,7 +93,7 @@
         display: flex;
     }
     .flex-item {
-        flex: 1; /* Divide into two equal parts */
+        flex: 1; 
         background-color: black;
         color: white;
         padding: 20px;
@@ -153,7 +153,7 @@
                 </form>
             </li>
             <li></li>
-            <li><a href="Cart.jsp"><img src="Image/cart.png"  height="30" width="30"></a></li>
+            <li><a href="Cart.jsp"><img src="Image/cart.png"  height="45" width="45" style=" background-color: white; border-radius: 50px;"></a></li>
             <li><form action="index.html">
                     <button style=" background-color: #a2090c; border: 0; font-size: 12px; width: 70px; height: 35px; "  type="submit" class="out-button">Log Out</button>
                 </form>
@@ -166,10 +166,10 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" height="100%" width="100%" src="Image/login.jpg" alt="First slide">
+                <img class="d-block w-100" height="100%" width="100%" src="Image/1.1.png" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" height="100%" width="100%" src="Image/form.jpg" alt="Second slide">
+                <img class="d-block w-100" height="100%" width="100%" src="Image/11.png" alt="Second slide">
             </div>
             <%--<div class="carousel-item">
                 <img class="d-block w-100" src="image3.jpg" alt="Third slide">
@@ -312,12 +312,24 @@
                                         0112345678 / 0335869568</p></div></div>
                             </div>
                             <div class="flex-footer"  style="text-align:center;"><div class=" container"><br>
-                                    <br><br><img src="Image/login.jpg" width="200px" height="100px"></div></div>
+                                    <br><br><a href="Home.jsp"><img src="Image/login.jpg" width="200px" height="100px"></a></div></div>
                             <div class="flex-footer"  style="text-align: right; "><div class=" container"><div  style=" padding-right: 20px;"><br>
-                                        <br><a href="AboutUs.html">About Us</a></div></div></div>
+                                        <br><p style="color: white;">Follow us</p>
+                                        
+                                        
+                                        <a href="#"> <img src="Image/fb.JPG" style=" border-radius: 100px; height: 35px; width: 35px; margin-right: 20px;"></a>
+                                        <a href="#">    <img src="Image/ins.JPG" style=" border-radius: 500px; height: 35px; width: 35px; margin-right: 20px;"></a>
+                                        <a href="#">    <img src="Image/wh.JPG" style=" border-radius: 500px; height: 35px; width: 35px; "></a>
+                                        <br><br><br>
+                                         <p style="color: white;">Payment Methods</p>
+                                         
+                                         <img src="Image/p1.JPG" style="  height: 40px; width: 65px; margin-right: 20px;">
+                                         <img src="Image/p2.JPG" style="  height: 40px; width: 65px; margin-right: 20px;">
+                                         <img src="Image/p3.JPG" style="  height: 40px; width: 65px; ">
+                                    </div></div></div>
                         </div>
                      </div>
-                      <footer style="text-align: center; color: white; background-color: black;">© 2024 ABC Company. All rights reserved.
+                      <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">© 2024 ABC Company. All rights reserved.
 </footer>
         <%--<%// Establish the connection to your database
         Class.forName("com.mysql.jdbc.Driver");
