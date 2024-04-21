@@ -160,46 +160,91 @@
             </li>
         </ul>
     </nav>
-    
-    <div style=" background-color: black">
-    
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" height="100%" width="100%" src="Image/1.1.png" alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" height="100%" width="100%" src="Image/11.png" alt="Second slide">
-            </div>
-            <%--<div class="carousel-item">
-                <img class="d-block w-100" src="image3.jpg" alt="Third slide">
-            </div>--%>
+    <div style="background-color: black; padding: 20px;">
+  
+    <div style="background-color: black; padding: 20px;">
+        <p> <h1><b><font color="red">MEN SHOES</font></b></h1> </p>  </div>
+<br>
+    <div class="row">
+        
+        <div class="col-md-4">
+           <div class="card">
+    <img class="card-img-top" src="Image/1.1.png" alt="First slide">
+    <div class="card-body">
+        <p class="card-text">Description for the first image.</p>
+        <br>
+        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
+    </div>
+</div>
+
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+
+        <!-- Card for the second image -->
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="Image/11.png" alt="Second slide">
+                <div class="card-body">
+                    <p class="card-text">Description for the second image.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card for the third image (example added) -->
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="Image/5.png" alt="Third slide"> <!-- Change src to your actual image path -->
+                <div class="card-body">
+                    <p class="card-text">Description for the third image.</p>
+                </div>
+            </div>
+        </div>
     </div>
-        
-        
-    </div>
+</div>
+
+
         
         
         <div style=" background-color: black;">
         <div class="container">
         <div class="flex-container">
-            <div class="flex-item" style=" border: 0;"><img  src="Image/form.jpg" width="100%" height="100%"></div>
+            <div class="flex-item" style=" border: 0;"><img  src="Image/5.png" width="100%" height="100%"></div>
             <div class="flex-item" style=" border: 0;"><br><br><h3 style=" text-align: center;">100% Sri Lankan</h3>
                 <p style=" text-align: center;">dgfiuoregfiolgjlsdhklg fghrfghdsfig riughoirehgiubsdflg ioghibfsdogbodsfgl</p></div>
         </div></div></div>
-            <div class="flex-container">
-                <div class="flex-item" style=" border: 0;"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
-                <div class="flex-item" style=" border: 0;"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
+           <div style="background-color: black; padding: 20px;">
+    <div class="row">
+        <!-- Card for the first image -->
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="Image/1.1.png" alt="First slide">
+                <div class="card-body">
+                    <p class="card-text">Description for the first image.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card for the second image -->
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="Image/11.png" alt="Second slide">
+                <div class="card-body">
+                    <p class="card-text">Description for the second image.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card for the third image (example added) -->
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="Image/11.png" alt="Third slide"> <!-- Change src to your actual image path -->
+                <div class="card-body">
+                    <p class="card-text">Description for the third image.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
             
             <br>
             
