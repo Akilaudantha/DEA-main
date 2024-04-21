@@ -199,10 +199,10 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\">\r\n");
       out.write("        <div class=\"carousel-inner\">\r\n");
       out.write("            <div class=\"carousel-item active\">\r\n");
-      out.write("                <img class=\"d-block w-100\" height=\"100%\" width=\"100%\" src=\"Image/login.jpg\" alt=\"First slide\">\r\n");
+      out.write("                <img class=\"d-block w-100\" height=\"100%\" width=\"100%\" src=\"Image/cr1.jpg\" alt=\"First slide\">\r\n");
       out.write("            </div>\r\n");
       out.write("            <div class=\"carousel-item\">\r\n");
-      out.write("                <img class=\"d-block w-100\" height=\"100%\" width=\"100%\" src=\"Image/form.jpg\" alt=\"Second slide\">\r\n");
+      out.write("                <img class=\"d-block w-100\" height=\"100%\" width=\"100%\" src=\"Image/cr2.jpg\" alt=\"Second slide\">\r\n");
       out.write("            </div>\r\n");
       out.write("            ");
       out.write("\r\n");
@@ -230,7 +230,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div></div></div>\r\n");
       out.write("            <div class=\"flex-container\">\r\n");
       out.write("                <div class=\"flex-item\" style=\" border: 0;\"><a href=\"Shoes.jsp\"><img  src=\"Image/form.jpg\" width=\"100%\" height=\"100%\"></a></div>\r\n");
-      out.write("                <div class=\"flex-item\" style=\" border: 0;\"><a href=\"Shoes.jsp\"><img  src=\"Image/form.jpg\" width=\"100%\" height=\"100%\"></a></div>\r\n");
+      out.write("                <div class=\"flex-item\" style=\" border: 0;\"><a href=\"Clothes.jsp\"><img  src=\"Image/login.jpg\" width=\"100%\" height=\"100%\"></a></div>\r\n");
       out.write("</div>\r\n");
       out.write("            \r\n");
       out.write("            <br>\r\n");
