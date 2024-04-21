@@ -39,6 +39,9 @@
             background-color: black;
             color: #fff;
             padding: 10px;
+            position: fixed;
+            z-index: 1000;
+            width: 100%;
         }
         .menu ul {
             list-style-type: none;
@@ -133,17 +136,30 @@
     }
         
     </style>
+    <script>
+        function x()
+        {
+            if(document.fn.select.value==="Shoes")
+            {
+                window.location.href = "Shoes.jsp";
+            }
+            else if (document.fn.select.value==="Clothes")
+            {
+                window.location.href = "Clothes.jsp";
+            }
+        }
+        </script>
 </head>
 <body>
     <nav class="menu">
         <ul>
             <li><a href="Home.jsp"><img src="Image/login.jpg" height="50" width="50"></a></li>
-            <li>
-                <select class="categ">
-                    <option disabled style="color: gray;">Select Category</option>
-                    <option>Shoes</option>
-                    <option>Clothes</option>
-                </select>
+            <li><form name="fn" onchange="x()">
+                    <select class="categ" name="select">
+                <option disabled selected style="color: gray;">Select Category</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Clothes">Clothes</option>
+                </select></form>
             </li>
             <li><a href="#">Help & Services</a></li>
             <li><a href="#">About Us</a></li>
@@ -153,15 +169,15 @@
                 </form>
             </li>
             <li></li>
-            <li><a href="Cart.jsp"><img src="Image/cart.png"  height="45" width="45" style=" background-color: white; border-radius: 50px;"></a></li>
-            <li><form action="index.html">
+            <li><a href="Cart.jsp" style=" padding-left: 30px;"><img src="Image/cart.png"  height="45" width="45" style="  background-color: white; border-radius: 50px;"></a></li>
+            <li><form action="index.html" style="padding-left: 5px; ">
                     <button style=" background-color: #a2090c; border: 0; font-size: 12px; width: 70px; height: 35px; "  type="submit" class="out-button">Log Out</button>
                 </form>
             </li>
         </ul>
     </nav>
     
-    <div style=" background-color: black">
+    <div style=" background-color: black; padding-top: 50px;" >
     
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
