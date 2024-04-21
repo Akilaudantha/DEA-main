@@ -23,7 +23,7 @@
 <%-- Adjust these values according to your requirements --%>
 <%@ page import="javax.servlet.annotation.MultipartConfig" %>
 <!DOCTYPE html>
-<html>
+<html><div style=" background-color: black;">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -185,6 +185,8 @@
                 <img class="card-img-top" src="Image/11.png" alt="Second slide">
                 <div class="card-body">
                     <p class="card-text">Description for the second image.</p>
+                     <br>
+        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
                 </div>
             </div>
         </div>
@@ -195,6 +197,8 @@
                 <img class="card-img-top" src="Image/5.png" alt="Third slide"> <!-- Change src to your actual image path -->
                 <div class="card-body">
                     <p class="card-text">Description for the third image.</p>
+                     <br>
+        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
                 </div>
             </div>
         </div>
@@ -208,8 +212,10 @@
         <div class="container">
         <div class="flex-container">
             <div class="flex-item" style=" border: 0;"><img  src="Image/5.png" width="100%" height="100%"></div>
-            <div class="flex-item" style=" border: 0;"><br><br><h3 style=" text-align: center;">100% Sri Lankan</h3>
-                <p style=" text-align: center;">dgfiuoregfiolgjlsdhklg fghrfghdsfig riughoirehgiubsdflg ioghibfsdogbodsfgl</p></div>
+            <div class="flex-item" style=" border: 0;"><br><br><br><br><br><h3 style=" text-align: center;"> <font color="red">100% Sri</font><font color="yellow">  Lan</font><font color="green">ka</font></h3>
+                <p style=" text-align: center;"><h4><font color="green">Welcome to our shoe collection! Step into style with our latest designs 
+                    crafted for comfort and elegance. From classic sneakers to trendy boots, each pair is a statement of quality and fashion. 
+                    Explore our collection today and find the perfect fit for every occasion</font></h4></p></div>
         </div></div></div>
            <div style="background-color: black; padding: 20px;">
     <div class="row">
@@ -219,6 +225,8 @@
                 <img class="card-img-top" src="Image/1.1.png" alt="First slide">
                 <div class="card-body">
                     <p class="card-text">Description for the first image.</p>
+                     <br>
+        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
                 </div>
             </div>
         </div>
@@ -229,6 +237,8 @@
                 <img class="card-img-top" src="Image/11.png" alt="Second slide">
                 <div class="card-body">
                     <p class="card-text">Description for the second image.</p>
+                     <br>
+        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
                 </div>
             </div>
         </div>
@@ -239,6 +249,8 @@
                 <img class="card-img-top" src="Image/11.png" alt="Third slide"> <!-- Change src to your actual image path -->
                 <div class="card-body">
                     <p class="card-text">Description for the third image.</p>
+                     <br>
+        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
                 </div>
             </div>
         </div>
@@ -246,104 +258,36 @@
 </div>
 
             
-            <br>
+    <br><div style="background-color: black; padding: 20px;">
+        <p> <h1><b><font color="red">MEN SLIDERS</font></b></h1> </p>  </div><br>
+        <div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <img class="card-img-top" src="Image/07.jpg" alt="Second slide">
+            <div class="card-body">
+                <p class="card-text">Description for the second image.</p>
+                 <br>
+        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <img class="card-img-top" src="Image/89.png" alt="Third slide">
+            <div class="card-body">
+                <p class="card-text">Description for the third image.</p>
+                 <br>
+        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
+            </div>
+        </div>
+    </div>
+</div>
+<br>
             
-            <hr>
-        
             
-                <%
-                    Class.forName("com.mysql.jdbc.Driver");
-                    String url="jdbc:mysql://localhost:3306/mainDEA";
-                    Connection con=DriverManager.getConnection(url,"root","");
-                    Statement st1=con.createStatement();
-                    
-                    String q1="SELECT*FROM Shoes";
-                    ResultSet rs1=st1.executeQuery(q1);
-                    Statement st2=con.createStatement();
-                    String q2="SELECT * FROM Clothes";
-                    ResultSet rs2=st2.executeQuery(q2);
-                    int a=0;
-                    %>
-                    
-                    <table>
-                        <tr>
-                            <%while(a < 2 && rs1.next() && rs2.next() )
-                     {%>
-                    
-                    <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';" >
-                 <% 
-                byte[] imageData = rs1.getBytes("Image");
-                String base64Image = Base64.getEncoder().encodeToString(imageData);
-                
-                 %>
-                 <img src="data:image/png;base64,<%= base64Image %>" width="100%" height="100%" />
-                <center><h3><%=rs1.getString("ItemName") %></h3>
-                <p><%= rs1.getString("Description") %></p>
-                <h5>Rs.<%= rs1.getString("Price") %></h5>
-                <form action="Shoes.jsp">
-                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">View more</button></center>
-                </form>
-                </div></td>
-
-                <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';">
-                 <% 
-                byte[] iData = rs2.getBytes("Image");
-                String base64 = Base64.getEncoder().encodeToString(iData);
-                 %>
-                 <img src="data:image/png;base64,<%= base64 %>" width="100%" height="100%" />
-                <center><h3><%= rs2.getString("ItemName") %></h3>
-                <p><%= rs2.getString("Description") %></p>
-                <h5>Rs.<%= rs2.getString("Price") %></h5>
-                <form action="Clothes.jsp">
-                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">View more</button></center>
-                </form>
-                </div></td>
-                    
-                     <% a++;  
-                    }
-                    %>
-                     </tr>
-                     
-                     <%a=0;%>
-                     <tr>
-                           <%while(a < 2 && rs1.next() && rs2.next() )
-                     {%>
-                    
-                    <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';" >
-                 <% 
-                byte[] imageData = rs1.getBytes("Image");
-                String base64Image = Base64.getEncoder().encodeToString(imageData);
-                
-                 %>
-                 <img src="data:image/png;base64,<%= base64Image %>" width="100%" height="100%" />
-                <center><h3><%=rs1.getString("ItemName") %></h3>
-                <p><%= rs1.getString("Description") %></p>
-                <h5>Rs.<%= rs1.getString("Price") %></h5>
-                <form action="Shoes.jsp">
-                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">View more</button></center>
-                </form>
-                </div></td>
-
-                <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';">
-                 <% 
-                byte[] iData = rs2.getBytes("Image");
-                String base64 = Base64.getEncoder().encodeToString(iData);
-                 %>
-                 <img src="data:image/png;base64,<%= base64 %>" width="100%" height="100%" />
-                <center><h3><%= rs2.getString("ItemName") %></h3>
-                <p><%= rs2.getString("Description") %></p>
-                <h5>Rs.<%= rs2.getString("Price") %></h5>
-                <form action="Clothes.jsp">
-                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">View more</button></center>
-                </form>
-                </div></td>
-                    
-                     <% a++;  
-                    }
-                    %>
-                     </tr>
-                     
-                     </table>
+            
+            
+              
         
                      <div class="footer">
                         <div class="flex-container">
@@ -410,5 +354,6 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+</div>
     
 </html>
