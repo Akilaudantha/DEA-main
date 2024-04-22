@@ -153,7 +153,7 @@
 <body>
     <nav class="menu">
         <ul>
-            <li><a href="Home.jsp"><img src="Image/login.jpg" height="50" width="50"></a></li>
+            <li><a href="Home.jsp"><img src="Image/logo.jpg" height="40" width="150"></a></li>
             <li><form name="fn" onchange="x()">
                     <select class="categ" name="select">
                 <option disabled selected style="color: gray;">Select Category</option>
@@ -164,7 +164,7 @@
             <li><a href="#">Help & Services</a></li>
             <li><a href="#">About Us</a></li>
             <li> <form action="search.jsp" method="post">
-                    <input style=" border: 0; background-color: #333333; color: #b3b3b3;"  type="text" name="search" class="search-input" placeholder="Search here ">
+                    <input style=" border: 0; background-color: #333333; color: #b3b3b3; width: 450px;"  type="text" name="search" class="search-input" placeholder="Search here ">
                     <button type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#333333'; this.style.color='white';" class="search-button"  style=" background-color: #333333; border: 0; ">Search</button>
                 </form>
             </li>
@@ -328,7 +328,7 @@
                                         0112345678 / 0335869568</p></div></div>
                             </div>
                             <div class="flex-footer"  style="text-align:center;"><div class=" container"><br>
-                                    <br><br><a href="Home.jsp"><img src="Image/login.jpg" width="200px" height="100px"></a></div></div>
+                                    <br><br><a href="Home.jsp"><img src="Image/logo.jpg" width="250px" height="100px"></a></div></div>
                             <div class="flex-footer"  style="text-align: right; "><div class=" container"><div  style=" padding-right: 20px;"><br>
                                         <br><p style="color: white;">Follow us</p>
                                         
@@ -345,7 +345,7 @@
                                     </div></div></div>
                         </div>
                      </div>
-                      <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">© 2024 ABC Company. All rights reserved.
+                      <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">© 2024 Mr.Style. All rights reserved.
 </footer>
         <%--<%// Establish the connection to your database
         Class.forName("com.mysql.jdbc.Driver");
