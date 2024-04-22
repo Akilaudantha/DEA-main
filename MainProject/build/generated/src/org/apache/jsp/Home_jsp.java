@@ -186,7 +186,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<body>\r\n");
       out.write("    <nav class=\"menu\">\r\n");
       out.write("        <ul>\r\n");
-      out.write("            <li><a href=\"Home.jsp\"><img src=\"Image/logo.jpg\" height=\"50\" width=\"200\"></a></li>\r\n");
+      out.write("            <li><a href=\"Home.jsp\"><img src=\"Image/logo.jpg\" height=\"40\" width=\"150\"></a></li>\r\n");
       out.write("            <li><form name=\"fn\" onchange=\"x()\">\r\n");
       out.write("                    <select class=\"categ\" name=\"select\">\r\n");
       out.write("                <option disabled selected style=\"color: gray;\">Select Category</option>\r\n");
@@ -197,7 +197,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <li><a href=\"#\">Help & Services</a></li>\r\n");
       out.write("            <li><a href=\"#\">About Us</a></li>\r\n");
       out.write("            <li> <form action=\"search.jsp\" method=\"post\">\r\n");
-      out.write("                    <input style=\" border: 0; background-color: #333333; color: #b3b3b3;\"  type=\"text\" name=\"search\" class=\"search-input\" placeholder=\"Search here \">\r\n");
+      out.write("                    <input style=\" border: 0; background-color: #333333; color: #b3b3b3; width: 450px;\"  type=\"text\" name=\"search\" class=\"search-input\" placeholder=\"Search here \">\r\n");
       out.write("                    <button type=\"submit\" onmousemove=\"this.style.backgroundColor = '#2a38ec'; this.style.color='white';\" onmouseout=\"this.style.backgroundColor = '#333333'; this.style.color='white';\" class=\"search-button\"  style=\" background-color: #333333; border: 0; \">Search</button>\r\n");
       out.write("                </form>\r\n");
       out.write("            </li>\r\n");
@@ -412,7 +412,7 @@ while(a < 2 && rs1.next() && rs2.next() )
       out.write("                                        0112345678 / 0335869568</p></div></div>\r\n");
       out.write("                            </div>\r\n");
       out.write("                            <div class=\"flex-footer\"  style=\"text-align:center;\"><div class=\" container\"><br>\r\n");
-      out.write("                                    <br><br><a href=\"Home.jsp\"><img src=\"Image/login.jpg\" width=\"200px\" height=\"100px\"></a></div></div>\r\n");
+      out.write("                                    <br><br><a href=\"Home.jsp\"><img src=\"Image/logo.jpg\" width=\"250px\" height=\"100px\"></a></div></div>\r\n");
       out.write("                            <div class=\"flex-footer\"  style=\"text-align: right; \"><div class=\" container\"><div  style=\" padding-right: 20px;\"><br>\r\n");
       out.write("                                        <br><p style=\"color: white;\">Follow us</p>\r\n");
       out.write("                                        \r\n");
@@ -429,7 +429,7 @@ while(a < 2 && rs1.next() && rs2.next() )
       out.write("                                    </div></div></div>\r\n");
       out.write("                        </div>\r\n");
       out.write("                     </div>\r\n");
-      out.write("                      <footer style=\"text-align: center; color: white; background-color: black; font-size: 11px;\">© 2024 ABC Company. All rights reserved.\r\n");
+      out.write("                      <footer style=\"text-align: center; color: white; background-color: black; font-size: 11px;\">© 2024 Mr.Style. All rights reserved.\r\n");
       out.write("</footer>\r\n");
       out.write("        ");
       out.write("\r\n");
