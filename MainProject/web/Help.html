@@ -139,16 +139,22 @@
         
     }
        button {
-            width: 100%;
-            height: 50px;
+            width: 90px;
+            height: 45px;
             padding: 10px;
             margin-bottom: 10px;
-            border: none;
+            border: 1;
+            border-color: white;
+            border-radius: 6px;
+            
+            
+       }
        button {
-            background-color: red;
+            background-color: black;
             color: white;
             cursor: pointer;
-            width: 120px;
+            
+            
         }
 
         button:hover {
@@ -158,10 +164,15 @@
         }
 
         button {
+            
             background-color: red;
             color: white;
             cursor: pointer;
             width: 120px;
+            height: 100%;
+            text-align: center;
+            
+            
         }
 
         button:hover {
@@ -193,11 +204,11 @@
                 <option value="Clothes">Clothes</option>
                 </select></form>
             </li>
-            <li><a href="#">Help & Services</a></li>
+           
             <li><a href="#">About Us</a></li>
             <li> <form action="search.jsp" method="post">
                     <input style=" border: 0; background-color: #333333; color: #b3b3b3; width: 450px;"  type="text" name="search" class="search-input" placeholder="Search here ">
-                    <button type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#333333'; this.style.color='white';" class="search-button"  style=" background-color: #333333; border: 0; ">Search</button>
+                    <button type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#333333'; this.style.color='white';" class="search-button"  style=" background-color: #333333; border: 0; height: 42px; ">Search</button>
                 </form>
             </li>
             <li></li>
@@ -222,7 +233,7 @@
                 <tbody>
                     <tr>
                         <td><label>First Name:</label></td>
-                        <td><input type="text" name="fname" value="" /></td>
+                        <td><input onmousemove="this.style.backgroundColor = 'white';" onmouseout="this.style.backgroundColor = 'gray';" type="text" name="fname" value="" /></td>
                     </tr>
                     <tr>
                         <td><label>Last Name:</label></td>
@@ -230,19 +241,19 @@
                     </tr>
                     <tr>
                         <td><label>Contact Number:</label></td>
-                        <td><input type="text" name="phone" value="" /></td>
+                        <td><input onmousemove="this.style.backgroundColor = 'white';" onmouseout="this.style.backgroundColor = 'gray';" type="text" name="phone" value="" /></td>
                     </tr>
                     <tr>
                         <td><label>Email:</label></td>
-                        <td><input type="text" name="email" value="" /></td>
+                        <td><input onmousemove="this.style.backgroundColor = 'white';" onmouseout="this.style.backgroundColor = 'gray';" type="text" name="email" value="" /></td>
                     </tr>
                     <tr>
                         <td><label>Message:</label></td>
-                        <td><textarea name="msg" style= "height:80px; width:188px;"></textarea></td>
+                        <td><textarea onmousemove="this.style.backgroundColor = 'white';" onmouseout="this.style.backgroundColor = 'gray';" name="msg" style= "height:80px; width:188px;"></textarea></td>
                     </tr>
                     <tr>
-                        <td><button type="submit">Submit</button></td>
-                        <td><button type="reset">Reset</button></td>
+                        <td style="padding-left: 30px;">    <button type="submit">Submit</button></td>
+                        <td style="padding-left: 20px;"><button type="reset">Reset</button></td>
                     </tr>
                 </tbody>
             </table>

@@ -161,7 +161,7 @@
                 <option value="Clothes">Clothes</option>
                 </select></form>
             </li>
-            <li><a href="#">Help & Services</a></li>
+            <li><a href="Help.html">Help & Services</a></li>
             <li><a href="#">About Us</a></li>
             <li> <form action="search.jsp" method="post">
                     <input style=" border: 0; background-color: #333333; color: #b3b3b3; width: 450px;"  type="text" name="search" class="search-input" placeholder="Search here ">
