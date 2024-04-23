@@ -163,11 +163,13 @@
             <li><form name="fn" onchange="x()">
                     <select class="categ" name="select">
                 <option disabled selected style="color: gray;">Select Category</option>
+                <option value="Home">Home</option>
                 <option value="Shoes">Shoes</option>
-                <option value="Clothes">Clothes</option>
+                
+                
                 </select></form>
             </li>
-            <li><a href="#">Help & Services</a></li>
+            <li><a href="Help.html">Help & Services</a></li>
             <li><a href="#">About Us</a></li>
             <li> <form action="search.jsp" method="post">
                     <input style=" border: 0; background-color: #333333; color: #b3b3b3; width: 450px;"  type="text" name="search" class="search-input" placeholder="Search here ">
@@ -214,13 +216,13 @@
                 String base64Image = Base64.getEncoder().encodeToString(imageData);
                 
                  %>
-                 <img src="data:image/png;base64,<%= base64Image %>" width="255" height="280" />
-                <center><h3><%=rs1.getString("ItemName") %></h3>
-                <p><%= rs1.getString("Description") %></p>
-                <h5>Rs.<%= rs1.getString("Price") %></h5>
-                <form action="Shoes.jsp">
-                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></center>
-                </form>
+                 <img src="data:image/png;base64,<%= base64Image %>"  width="255" height="280" />
+                 <center><form action="AddCart" method="post"><h3><%=rs1.getString("ItemName") %><input type="hidden" name="name" value="<%=rs1.getString("ItemName") %>" /></h3>
+                <p><%= rs1.getString("Description") %></p><input type="hidden" name="des" value="<%=rs1.getString("Description") %>" />
+                <h5>Rs.<%= rs1.getString("Price") %></h5><input type="hidden" name="price" value="<%=rs1.getString("Price") %>" />
+                
+                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></form></center>
+                
                 </div></td>
                      <% b++; 
                      if(b<=3)
@@ -236,12 +238,12 @@
                 
                  %>
                  <img src="data:image/png;base64,<%= base64Image %>" width="255" height="280" />
-                <center><h3><%=rs1.getString("ItemName") %></h3>
-                <p><%= rs1.getString("Description") %></p>
-                <h5>Rs.<%= rs1.getString("Price") %></h5>
-                <form action="Shoes.jsp">
-                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></center>
-                </form>
+                 <center><form action="AddCart" method="post"><h3><%=rs1.getString("ItemName") %><input type="hidden" name="name" value="<%=rs1.getString("ItemName") %>" /></h3>
+                <p><%= rs1.getString("Description") %></p><input type="hidden" name="des" value="<%=rs1.getString("Description") %>" />
+                <h5>Rs.<%= rs1.getString("Price") %></h5><input type="hidden" name="price" value="<%=rs1.getString("Price") %>" />
+                
+                <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></form></center>
+                
                 </div></td>
 
                      <% a++;
@@ -276,12 +278,12 @@
                 
                  %>
                  <img src="data:image/png;base64,<%= base64Image %>" width="255" height="280" />
-                <center><h3><%=rs1.getString("ItemName") %></h3>
-                <p><%= rs1.getString("Description") %></p>
-                <h5>Rs.<%= rs1.getString("Price") %></h5>
-                <form action="Shoes.jsp">
-                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></center>
-                </form>
+                <center><form action="AddCart" method="post"><h3><%=rs1.getString("ItemName") %><input type="hidden" name="name" value="<%=rs1.getString("ItemName") %>" /></h3>
+                <p><%= rs1.getString("Description") %></p><input type="hidden" name="des" value="<%=rs1.getString("Description") %>" />
+                <h5>Rs.<%= rs1.getString("Price") %></h5><input type="hidden" name="price" value="<%=rs1.getString("Price") %>" />
+                
+                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></form></center>
+                
                 </div></td>
                      <% d++;  
                      if (d<=3)
@@ -297,11 +299,11 @@
                 
                  %>
                  <img src="data:image/png;base64,<%= base64Image %>" width="255" height="280" />
-                <center><h3><%=rs1.getString("ItemName") %></h3>
-                <p><%= rs1.getString("Description") %></p>
-                <h5>Rs.<%= rs1.getString("Price") %></h5>
-                <form action="Shoes.jsp">
-                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></center>
+                <center><form action="AddCart" method="post"><h3><%=rs1.getString("ItemName") %><input type="hidden" name="name" value="<%=rs1.getString("ItemName") %>" /></h3>
+                <p><%= rs1.getString("Description") %></p><input type="hidden" name="des" value="<%=rs1.getString("Description") %>" />
+                <h5>Rs.<%= rs1.getString("Price") %></h5><input type="hidden" name="price" value="<%=rs1.getString("Price") %>" />
+                
+                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></form></center>
                 </form>
                 </div></td>
 
@@ -329,7 +331,7 @@
                                         0112345678 / 0335869568</p></div></div>
                             </div>
                             <div class="flex-footer"  style="text-align:center;"><div class=" container"><br>
-                                    <br><br><a href="Home.jsp"><img src="Image/logo.jpg" width="250px" height="100px"></a></div></div>
+                                    <br><br><a href="Home.jsp"><img src="Image/logo.jpg" style=" width:250px; height:100px; border-radius: 8px;"></a></div></div>
                             <div class="flex-footer"  style="text-align: right; "><div class=" container"><div  style=" padding-right: 20px;"><br>
                                         <br><p style="color: white;">Follow us</p>
                                         

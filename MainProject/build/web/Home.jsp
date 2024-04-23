@@ -17,10 +17,7 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.io.PrintWriter" %>
 
-<%-- Configure the multipart configuration --%>
-<%-- The maxFileSize attribute sets the maximum size of a file upload (in bytes) --%>
-<%-- The maxRequestSize attribute sets the maximum size allowed for a multipart/form-data request (in bytes) --%>
-<%-- Adjust these values according to your requirements --%>
+
 <%@ page import="javax.servlet.annotation.MultipartConfig" %>
 <!DOCTYPE html>
 <html>
@@ -328,7 +325,7 @@
                                         0112345678 / 0335869568</p></div></div>
                             </div>
                             <div class="flex-footer"  style="text-align:center;"><div class=" container"><br>
-                                    <br><br><a href="Home.jsp"><img src="Image/logo.jpg" width="250px" height="100px"></a></div></div>
+                                    <br><br><a href="Home.jsp"><img src="Image/logo.jpg" style=" width:250px; height:100px; border-radius: 8px;"></a></div></div>
                             <div class="flex-footer"  style="text-align: right; "><div class=" container"><div  style=" padding-right: 20px;"><br>
                                         <br><p style="color: white;">Follow us</p>
                                         
@@ -347,33 +344,7 @@
                      </div>
                       <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">© 2024 Mr.Style. All rights reserved.
 </footer>
-        <%--<%// Establish the connection to your database
-        Class.forName("com.mysql.jdbc.Driver");
-        String url="jdbc:mysql://localhost:3306/mainDEA";
         
-        Connection conn = DriverManager.getConnection(url, "root", "");
-        
-        
-        
-        
-        Statement s = conn.createStatement();
-        
-        String sql = "SELECT * FROM Clothes";
-        
-        ResultSet rs=s.executeQuery(sql);
-        
-        while (rs.next())
-        {
-            
-        byte[] imageData = rs.getBytes("Image");
-        
-       
-        String base64Image = Base64.getEncoder().encodeToString(imageData);
-        
-         
-        out.println("<tr><td><img src=\"data:image/png;base64," + base64Image + "\" /></td></tr>");
-        
-        }%>--%>
        
        
         

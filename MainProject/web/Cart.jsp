@@ -1,10 +1,35 @@
+<%-- 
+    Document   : Cart
+    Created on : Apr 23, 2024, 3:30:46 PM
+    Author     : Akila Udantha
+--%>
+<%@page import="javax.validation.constraints.Null"%>
+<%@ page import="java.io.*,java.sql.*,javax.servlet.http.*,javax.servlet.*,javax.servlet.annotation.MultipartConfig" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page language="java" %>
+<%@ page import="java.util.*" %>
+
+<%-- Add the @MultipartConfig annotation to enable handling multipart requests --%>
+<%@ page import="java.io.InputStream" %>
+<%@ page import="javax.servlet.annotation.MultipartConfig" %>
+<%@ page import="javax.servlet.http.Part" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.io.PrintWriter" %>
+
+
+<%@ page import="javax.servlet.annotation.MultipartConfig" %>
+
+
+<!DOCTYPE html>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <title>Help & Services</title>
+        <title>Cart</title>
         
         <style>
             .pimage{
@@ -82,6 +107,15 @@
     td{
         padding-top: 30px;
         padding-bottom: 30px;
+        padding-left: 80px;
+        padding-right: 80px; 
+    }
+    th
+    {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 80px;
+        padding-righ: 80px; 
     }
     input{
         background-color: grey;
@@ -91,12 +125,7 @@
         height: 30px;
         weight:500px;
     } 
-    textarea{
-       background-color: grey; 
-        border-radius: 5px;
-        border: 1;
-        border-color: white;
-    }
+    
     label{
         font-weight: bold;
         padding-right: 50px;
@@ -142,6 +171,23 @@
         button:hover {
             background-color: #0056b3;
         }
+        .flex-container {
+        display: flex;
+    }
+    .flex-item {
+        flex: 1; 
+        background-color: black;
+        color: white;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+    .flex-footer{
+        flex: 2; 
+        
+        
+        
+    }
+        
     </style>
     <script>
         function x()
@@ -157,7 +203,7 @@
         }
         </script>
 </head>
-<body style="background-color:black; color:white; ">
+<body style=" color:black; ">
     <nav class="menu">
         <ul>
             <li><a href="Home.jsp"><img src="Image/logo.jpg" height="40" width="150"></a></li>
@@ -183,55 +229,40 @@
             </li>
         </ul>
     </nav>
-    <div class="container">
-        <center>
-            <div class="sim"> <img style="width:300px; height:120px; border-radius: 20px;" src ="Image/logo.jpg"></div>
-            <h5 style=" padding-top: -25px; padding-bottom: 50px;">Help & Support</h5>
-            <h1 style="font-size: 40px;">Ask Anything</h1>
-           
+        
+    <%
+        
+
+        Class.forName("com.mysql.jdbc.Driver");
+        String url="jdbc:mysql://localhost:3306/mainDEA";
+        Connection con=DriverManager.getConnection(url,"root","");
+        Statement st=con.createStatement();
+        
+
+        String qu="SELECT * FROM Cart";
+        ResultSet rs=st.executeQuery(qu);%>
+       
             
         
-        <form action="Message" method="post">
-            <table border="0">
-              
-                <tbody>
-                    <tr>
-                        <td><label>First Name:</label></td>
-                        <td><input onmousemove="this.style.backgroundColor = 'white';" onmouseout="this.style.backgroundColor = 'gray';" type="text" name="fname" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Last Name:</label></td>
-                        <td><input type="text" name="lname" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Contact Number:</label></td>
-                        <td><input onmousemove="this.style.backgroundColor = 'white';" onmouseout="this.style.backgroundColor = 'gray';" type="text" name="phone" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Email:</label></td>
-                        <td><input onmousemove="this.style.backgroundColor = 'white';" onmouseout="this.style.backgroundColor = 'gray';" type="text" name="email" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Message:</label></td>
-                        <td><textarea onmousemove="this.style.backgroundColor = 'white';" onmouseout="this.style.backgroundColor = 'gray';" name="msg" style= "height:80px; width:188px;"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td style="padding-left: 30px;">    <button type="submit">Submit</button></td>
-                        <td style="padding-left: 20px;"><button type="reset">Reset</button></td>
-                    </tr>
-                </tbody>
-            </table>
+<center style=" padding-top: 50px; padding-bottom: 500px; "><table>
+        <thead ><tr><th><h4>Item</h4></th><th><h4>Name</h4></th><th><h4>Description</h4></th><th><h4>Price</h4></th></tr></thead>
+        <%while(rs.next())
+        {%>
         
-        </form>
-            </center>
+        <tr>
+            <td><% 
+                byte[] imageData = rs.getBytes("Image");
+                String base64 = Base64.getEncoder().encodeToString(imageData);
+                 %>
+        <center> <img src="data:image/png;base64,<%= base64 %>" width="80px" height="60px" /></center></td><td><%=rs.getString("ItemName")%></td><td><%=rs.getString("Description")%></td><td><%=rs.getString("Price")%></td><td><form action="DCart" method="post"><button type="submit">Delete</button><input type="hidden" name="name" value="<%=rs.getString("ItemName")%>"></form></td></tr>
         
         
+        <%}%>
         
-    </div>
+    </table></center>
     
    
-        
-                     <div class="footer">
+        <div class="footer">
                         <div class="flex-container">
                             <div class="flex-footer">
                                 <div class=" container"><br>

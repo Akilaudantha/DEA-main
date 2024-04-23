@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -24,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Akila Udantha
  */
-@WebServlet(name = "Log", urlPatterns = {"/Log"})
-public class Log extends HttpServlet {
+@WebServlet(name = "DCart", urlPatterns = {"/DCart"})
+public class DCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +43,10 @@ public class Log extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Log</title>");            
+            out.println("<title>Servlet DCart</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Log at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DCart at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -81,53 +80,21 @@ public class Log extends HttpServlet {
             throws ServletException, IOException {
         try {
             //processRequest(request, response);
-            String user=request.getParameter("uname");
-            String psw=request.getParameter("psw");
-            
-            if(user.equals("") && psw.equals(""))
-                {
-                    response.sendRedirect("Invalid.html");
-                }
-            
+            String name=request.getParameter("name");
             
             Class.forName("com.mysql.jdbc.Driver");
             String url="jdbc:mysql://localhost:3306/mainDEA";
             Connection con=DriverManager.getConnection(url,"root","");
             Statement st=con.createStatement();
-            
-            String q1="SELECT * FROM Admin";
-            ResultSet rs1=st.executeQuery(q1);
-            while (rs1.next() )
-            { if (user.equals(rs1.getString("Username")) && psw.equals(rs1.getString("Password")))
-            {
-                response.sendRedirect("AdminHome.html");
-            }
-            }
-            
-            String q2="SELECT * FROM Users";
-            ResultSet rs2=st.executeQuery(q2);
-            while (rs2.next())
-            {
-                if(user.equals(rs2.getString("FirstName")) && psw.equals(rs2.getString("Password")))
-                {
-                    response.sendRedirect("Home.jsp");
-                }
-            }
+
+            String qu="DELETE FROM Cart WHERE ItemName='"+name+"'";
+            st.executeUpdate(qu);
+            response.sendRedirect("Cart.jsp");
             
             
-            
-              
-            
-           
-            response.sendRedirect("Invalid.html");
         } catch (Exception ex) {
-            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
-            
-            
-            
-        
+            Logger.getLogger(DCart.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
