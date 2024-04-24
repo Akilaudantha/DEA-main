@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Checkout</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <style>
+            .pimage{
+                width: 20px;
+                height: 10px;
+            }
+        
+        .menu {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            z-index: 1000;
+            width: 100%;
+        }
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+        .menu li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+        }
+        .search-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .search-input {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 550px;
+            height: 40px;
+            max-width: 100%;
+            align-content: center;
+            text-align: center;
+        }
+        .search-button {
+            padding: 8px 12px;
+            border: 1px solid #007bff;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .out-button{
+            padding: 8px 12px;
+            border: 1px solid #007bff;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            align-content:  space-around;
+        }
+        .categ{
+            background-color: black;
+            color: #fff;
+        }
+        .flex-container {
+        display: flex;
+    }
+    .flex-item {
+        flex: 1; 
+        background-color: black;
+        color: white;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+    .flex-footer{
+        flex: 2; 
+        
+        
+        
+    }
+    .card {
+       
+        border: 0;
+        border-radius: 8px;
+        padding: 20px;
+        width: 295px;
+        height: 450px;
+       
+        background-color: #fff;
+        margin: 20px;
+    }
+
+  
+    .card h3 {
+        margin-top: 0;
+    }
+
+   
+    .card p {
+        margin-bottom: 0;
+    }
+    .footer{
+        height: 250px;
+        background-color: black;
+        width: 100%;
+    }
+        
+    </style>
+    <script>
+        function x()
+        {
+            if(document.pay.)
+        }
+        </script>
+    </head>
+    <body>
+       <nav class="menu">
+        <ul>
+            <li><a href="Home.jsp"><img src="Image/logo.jpg" height="40" width="150"></a></li>
+            <li><form name="fn" onchange="x()">
+                    <select class="categ" name="select">
+                <option disabled selected style="color: gray;">Select Category</option>
+                <option value="Home">Home</option>
+                <option value="Shoes">Shoes</option>
+                
+                
+                </select></form>
+            </li>
+            <li><a href="Help.html">Help & Services</a></li>
+            <li><a href="#">About Us</a></li>
+            <li> <form action="search.jsp" method="post">
+                    <input style=" border: 0; background-color: #333333; color: #b3b3b3; width: 450px;"  type="text" name="search" class="search-input" placeholder="Search here ">
+                    <button type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#333333'; this.style.color='white';" class="search-button"  style=" background-color: #333333; border: 0; ">Search</button>
+                </form>
+            </li>
+            <li></li>
+            <li><a href="Cart.jsp" style=" padding-left: 30px;"><img src="Image/cart.png"  height="45" width="45" style="  background-color: white; border-radius: 50px;"></a></li>
+            <li><form action="index.html" style="padding-left: 5px; ">
+                    <button style=" background-color: #a2090c; border: 0; font-size: 12px; width: 70px; height: 35px; "  type="submit" class="out-button">Log Out</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+          <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <form name="pay" action="Payments" method="post">
+       <h1>Payment</h1>
+        <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="Name"></td>
+            </tr>
+             
+            <tr>
+                <td>Shipping Address</td>
+                <td><textarea name="cn" placeholder="Enter Address"></textarea></td>
+            </tr>
+           
+            <tr>
+                <td>Card Number</td>
+                <td><input type="number" name="card"></td>
+                
+            </tr>
+            <tr>
+                <td>Expire Date</td>
+            
+                <td><input type="text" name="date"  ></td></tr>
+            <tr>
+                <td>CVC Code</td>
+                <td><input type="password" name="cvc" placeholder="CVC"></td>
+            </tr>
+           
+            <tr> 
+               
+                <td><button type="submit" onclick="x()">Pay now</button></td> 
+            </tr>
+           
+        </table>
+    </form>
+    </body>
+</html>
