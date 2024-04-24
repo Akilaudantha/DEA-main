@@ -9,10 +9,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -80,34 +79,33 @@ public class Payments extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String Name=request.getParameter("Name");
-        String Address=request.getParameter("cn");
-        int CardNumber=Integer.parseInt(request.getParameter("card"));
-       String confirmed = request.getParameter("confirmed");
-
-         if (confirmed != null && confirmed.equals("1")){
-              String ExpireDate = request.getParameter("date");
-    String CVCcode = request.getParameter("cvc");
-         
         try {
+            String Name=request.getParameter("Name");
+            String Address=request.getParameter("Address");
+            String CardNumber=request.getParameter("Card");
+            String ExpireDate=request.getParameter("Date");
+            String CVCcode=request.getParameter("cvc");
+            
             Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Payments.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         String url="jdbc:mysql://localhost:3306/mainDEA";
-         Connection con;
-        try {
-            con = DriverManager.getConnection(url,"root","");
-          Statement st=con.createStatement();
-          String q1="INSERT INTO Payment VALUES('"+Name+"','"+Address+"','"+CardNumber+"','"+ExpireDate+"','"+CVCcode+"')";
-          st.executeUpdate(q1);
-        } catch (SQLException ex) {
-            Logger.getLogger(Payments.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        response.sendRedirect("Thankyou.html");
-         
-      //  processRequest(request, response);
-    }
+            String url="jdbc:mysql://localhost:3306/mainDEA";
+            Connection con=DriverManager.getConnection(url,"root","");
+            Statement st1=con.createStatement();
+           /* Statement st2=con.createStatement();
+            String q2="SELECT * FROM Users WHERE FirstName='"+Name+"'";
+            */
+           // ResultSet rs2=st2.executeQuery(q2);
+            String q1="INSERT INTO Payment (Name) VALUES('"+Name+"')";
+            st1.executeUpdate(q1);
+            
+            response.sendRedirect("Thankyou.html");
+            //  processRequest(request, response);
+        }  catch (Exception ex) {
+    // Log the exception stack trace for debugging
+    ex.printStackTrace();
+    Logger.getLogger(Payments.class.getName()).log(Level.SEVERE, null, ex);
+}
+        
+    
     }
 
     /**
