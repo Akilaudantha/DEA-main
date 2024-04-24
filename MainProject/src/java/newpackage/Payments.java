@@ -6,9 +6,12 @@
 package newpackage;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -80,30 +83,32 @@ public class Payments extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String Name=request.getParameter("Name");
-            String Address=request.getParameter("Address");
-            String CardNumber=request.getParameter("Card");
-            String ExpireDate=request.getParameter("Date");
-            String CVCcode=request.getParameter("cvc");
+            String name=request.getParameter("Name");
+            String ad=request.getParameter("Address");
+            String cd=request.getParameter("Card");
+            String date=request.getParameter("Data");
+            String cvc=request.getParameter("cvc");
+            String phone=request.getParameter("phone");
             
             Class.forName("com.mysql.jdbc.Driver");
             String url="jdbc:mysql://localhost:3306/mainDEA";
             Connection con=DriverManager.getConnection(url,"root","");
-            Statement st1=con.createStatement();
-           /* Statement st2=con.createStatement();
-            String q2="SELECT * FROM Users WHERE FirstName='"+Name+"'";
-            */
-           // ResultSet rs2=st2.executeQuery(q2);
-            String q1="INSERT INTO Payment (Name) VALUES('"+Name+"')";
-            st1.executeUpdate(q1);
+            Statement st=con.createStatement();
+
+            
+            
+            String q1="INSERT INTO Payment VALUES ('"+name+"','"+ad+"','"+cd+"','"+date+"','"+cvc+"','"+phone+"')";
+            st.executeUpdate(q1);
+            
             
             response.sendRedirect("Thankyou.html");
-            //  processRequest(request, response);
-        }  catch (Exception ex) {
-    // Log the exception stack trace for debugging
-    ex.printStackTrace();
-    Logger.getLogger(Payments.class.getName()).log(Level.SEVERE, null, ex);
-}
+                     
+   
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Payments.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
         
     
     }

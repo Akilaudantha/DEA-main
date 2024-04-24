@@ -240,7 +240,11 @@
         
 
         String qu="SELECT * FROM Cart";
-        ResultSet rs=st.executeQuery(qu);%>
+        ResultSet rs=st.executeQuery(qu);
+        
+        String sum="SELECT SUM(Price) AS total FROM Cart";
+        ResultSet rs2=st.executeQuery(sum);
+    %>
        
             
         
@@ -258,7 +262,8 @@
         
         
         <%}%>
-        
+        <tr><td></td><td></td><td></td><td><hr style=" background-color: black; width: 50px;"></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
     </table></center>
     
    
