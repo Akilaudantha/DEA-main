@@ -3,7 +3,7 @@
     Created on : Apr 14, 2024, 1:49:14 AM
     Author     : Akila Udantha
 --%>
-<%@ page import="java.io.*,java.sql.*,javax.servlet.http.*,javax.servlet.*,javax.servlet.annotation.MultipartConfig" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ page language="java" %>
@@ -27,7 +27,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <title>Home</title>
+        <title>Shoes</title>
         
         <style>
             .pimage{
@@ -39,6 +39,9 @@
             background-color: black;
             color: #fff;
             padding: 10px;
+            position: fixed;
+            z-index: 1000;
+            width: 100%;
         }
         .menu ul {
             list-style-type: none;
@@ -133,17 +136,36 @@
     }
         
     </style>
+    <script>
+        function x()
+        {
+            if(document.fn.select.value==="Shoes")
+            {
+                window.location.href = "Shoes.jsp";
+            }
+            else if (document.fn.select.value==="Clothes")
+            {
+                window.location.href = "Clothes.jsp";
+            }
+            else if (document.fn.select.value==="Home")
+            {
+                window.location.href = "Home.jsp";
+            }
+        }
+        </script>
 </head>
 <body>
     <nav class="menu">
         <ul>
             <li><a href="Home.jsp"><img src="Image/login.jpg" height="50" width="50"></a></li>
             <li>
-                <select class="categ">
-                    <option disabled style="color: gray;">Select Category</option>
-                    <option>Shoes</option>
-                    <option>Clothes</option>
-                </select>
+                <form name="fn" onchange="x()">
+                    <select class="categ" name="select">
+                <option disabled selected style="color: gray;">Select Category</option>
+                <option value="Home">Home</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Clothes">Clothes</option>
+                </select></form>
             </li>
             <li><a href="#">Help & Services</a></li>
             <li><a href="#">About Us</a></li>
@@ -153,8 +175,8 @@
                 </form>
             </li>
             <li></li>
-            <li><a href="Cart.jsp"><img src="Image/cart.png"  height="45" width="45" style=" background-color: white; border-radius: 50px;"></a></li>
-            <li><form action="index.html">
+            <li><a href="Cart.jsp" style=" padding-left: 30px;"><img src="Image/cart.png"  height="45" width="45" style="  background-color: white; border-radius: 50px;"></a></li>
+            <li><form action="index.html" style="padding-left: 5px; ">
                     <button style=" background-color: #a2090c; border: 0; font-size: 12px; width: 70px; height: 35px; "  type="submit" class="out-button">Log Out</button>
                 </form>
             </li>
@@ -163,7 +185,7 @@
     <div style="background-color: black; padding: 20px;">
   
     <div style="background-color: black; padding: 20px;">
-        <p> <h1><b><font color="red">MEN SHOES</font></b></h1> </p>  </div>
+        <p style=" padding-top: 25px;"> <h1><b><font color="red">MEN SHOES</font></b></h1> </p>  </div>
 <br>
     <div class="row">
         
@@ -318,7 +340,7 @@
                                     </div></div></div>
                         </div>
                      </div>
-                      <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">© 2024 ABC Company. All rights reserved.
+                      <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">©️ 2024 ABC Company. All rights reserved.
 </footer>
         <%--<%// Establish the connection to your database
         Class.forName("com.mysql.jdbc.Driver");

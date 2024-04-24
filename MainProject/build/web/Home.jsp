@@ -17,10 +17,7 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.io.PrintWriter" %>
 
-<%-- Configure the multipart configuration --%>
-<%-- The maxFileSize attribute sets the maximum size of a file upload (in bytes) --%>
-<%-- The maxRequestSize attribute sets the maximum size allowed for a multipart/form-data request (in bytes) --%>
-<%-- Adjust these values according to your requirements --%>
+
 <%@ page import="javax.servlet.annotation.MultipartConfig" %>
 <!DOCTYPE html>
 <html>
@@ -39,6 +36,9 @@
             background-color: black;
             color: #fff;
             padding: 10px;
+            position: fixed;
+            z-index: 1000;
+            width: 100%;
         }
         .menu ul {
             list-style-type: none;
@@ -133,35 +133,48 @@
     }
         
     </style>
+    <script>
+        function x()
+        {
+            if(document.fn.select.value==="Shoes")
+            {
+                window.location.href = "Shoes.jsp";
+            }
+            else if (document.fn.select.value==="Clothes")
+            {
+                window.location.href = "Clothes.jsp";
+            }
+        }
+        </script>
 </head>
 <body>
     <nav class="menu">
         <ul>
-            <li><a href="Home.jsp"><img src="Image/login.jpg" height="50" width="50"></a></li>
-            <li>
-                <select class="categ">
-                    <option disabled style="color: gray;">Select Category</option>
-                    <option>Shoes</option>
-                    <option>Clothes</option>
-                </select>
+            <li><a href="Home.jsp"><img src="Image/logo.jpg" height="40" width="150"></a></li>
+            <li><form name="fn" onchange="x()">
+                    <select class="categ" name="select">
+                <option disabled selected style="color: gray;">Select Category</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Clothes">Clothes</option>
+                </select></form>
             </li>
-            <li><a href="#">Help & Services</a></li>
+            <li><a href="Help.html">Help & Services</a></li>
             <li><a href="#">About Us</a></li>
             <li> <form action="search.jsp" method="post">
-                    <input style=" border: 0; background-color: #333333; color: #b3b3b3;"  type="text" name="search" class="search-input" placeholder="Search here ">
+                    <input style=" border: 0; background-color: #333333; color: #b3b3b3; width: 450px;"  type="text" name="search" class="search-input" placeholder="Search here ">
                     <button type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#333333'; this.style.color='white';" class="search-button"  style=" background-color: #333333; border: 0; ">Search</button>
                 </form>
             </li>
             <li></li>
-            <li><a href="Cart.jsp"><img src="Image/cart.png"  height="45" width="45" style=" background-color: white; border-radius: 50px;"></a></li>
-            <li><form action="index.html">
+            <li><a href="Cart.jsp" style=" padding-left: 30px;"><img src="Image/cart.png"  height="45" width="45" style="  background-color: white; border-radius: 50px;"></a></li>
+            <li><form action="index.html" style="padding-left: 5px; ">
                     <button style=" background-color: #a2090c; border: 0; font-size: 12px; width: 70px; height: 35px; "  type="submit" class="out-button">Log Out</button>
                 </form>
             </li>
         </ul>
     </nav>
     
-    <div style=" background-color: black">
+    <div style=" background-color: black; padding-top: 50px;" >
     
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -312,7 +325,7 @@
                                         0112345678 / 0335869568</p></div></div>
                             </div>
                             <div class="flex-footer"  style="text-align:center;"><div class=" container"><br>
-                                    <br><br><a href="Home.jsp"><img src="Image/login.jpg" width="200px" height="100px"></a></div></div>
+                                    <br><br><a href="Home.jsp"><img src="Image/logo.jpg" style=" width:250px; height:100px; border-radius: 8px;"></a></div></div>
                             <div class="flex-footer"  style="text-align: right; "><div class=" container"><div  style=" padding-right: 20px;"><br>
                                         <br><p style="color: white;">Follow us</p>
                                         
@@ -329,35 +342,9 @@
                                     </div></div></div>
                         </div>
                      </div>
-                      <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">© 2024 ABC Company. All rights reserved.
+                      <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">© 2024 Mr.Style. All rights reserved.
 </footer>
-        <%--<%// Establish the connection to your database
-        Class.forName("com.mysql.jdbc.Driver");
-        String url="jdbc:mysql://localhost:3306/mainDEA";
         
-        Connection conn = DriverManager.getConnection(url, "root", "");
-        
-        
-        
-        
-        Statement s = conn.createStatement();
-        
-        String sql = "SELECT * FROM Clothes";
-        
-        ResultSet rs=s.executeQuery(sql);
-        
-        while (rs.next())
-        {
-            
-        byte[] imageData = rs.getBytes("Image");
-        
-       
-        String base64Image = Base64.getEncoder().encodeToString(imageData);
-        
-         
-        out.println("<tr><td><img src=\"data:image/png;base64," + base64Image + "\" /></td></tr>");
-        
-        }%>--%>
        
        
         

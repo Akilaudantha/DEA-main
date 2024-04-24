@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/D:/GitHub/DEA-main/MainProject/web/AdminHome.html</file>
             <file>file:/D:/GitHub/DEA-main/MainProject/src/java/newpackage/Log.java</file>
@@ -9,5 +10,8 @@
             <file>file:/D:/GitHub/DEA-main/MainProject/web/Shoes.jsp</file>
             <file>file:/D:/GitHub/DEA-main/MainProject/web/index.html</file>
         </group>
+=======
+        <group/>
+>>>>>>> 853522ec9e1c226e295b38718cf62cc9d63eb661
     </open-files>
 </project-private>

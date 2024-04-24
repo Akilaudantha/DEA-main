@@ -6,9 +6,12 @@
 package newpackage;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,13 +22,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Akila Udantha
  */
-@WebServlet(name = "Log", urlPatterns = {"/Log"})
-public class Log extends HttpServlet {
+@WebServlet(name = "AddCart", urlPatterns = {"/AddCart"})
+public class AddCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +48,10 @@ public class Log extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Log</title>");            
+            out.println("<title>Servlet AddCart</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Log at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddCart at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -81,52 +85,57 @@ public class Log extends HttpServlet {
             throws ServletException, IOException {
         try {
             //processRequest(request, response);
-            String user=request.getParameter("uname");
-            String psw=request.getParameter("psw");
             
-            if(user.equals("") && psw.equals(""))
-                {
-                    response.sendRedirect("Invalid.html");
-                }
-            
-            
+            String name=request.getParameter("name");
+            String des=request.getParameter("des");
+            String price=request.getParameter("price");
+
             Class.forName("com.mysql.jdbc.Driver");
             String url="jdbc:mysql://localhost:3306/mainDEA";
             Connection con=DriverManager.getConnection(url,"root","");
-            Statement st=con.createStatement();
+            Statement st1=con.createStatement();
+            Statement st2=con.createStatement();
             
-            String q1="SELECT * FROM Admin";
-            ResultSet rs1=st.executeQuery(q1);
-            while (rs1.next() )
-            { if (user.equals(rs1.getString("Username")) && psw.equals(rs1.getString("Password")))
-            {
-                response.sendRedirect("AdminHome.html");
-            }
-            }
-            
-            String q2="SELECT * FROM Users";
-            ResultSet rs2=st.executeQuery(q2);
-            while (rs2.next())
-            {
-                if(user.equals(rs2.getString("FirstName")) && psw.equals(rs2.getString("Password")))
-                {
-                    response.sendRedirect("Home.jsp");
-                }
-            }
-            
-            
-            
-              
-            
+            String q1="INSERT INTO Cart (ItemName,Description,Price) VALUES ('"+name+"','"+des+"','"+price+"')";
+            st1.executeUpdate(q1);
+            String q2="SELECT * FROM Shoes WHERE ItemName='"+name+"' AND Description = '"+des+"'" ;
+            String q3="SELECT * FROM Clothes WHERE ItemName='"+name+"' AND Description = '"+des+"'" ;
+            ResultSet rs1=st1.executeQuery(q2);
+            ResultSet rs2=st2.executeQuery(q3);
            
-            response.sendRedirect("Invalid.html");
-        } catch (Exception ex) {
-            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+            while (rs1.next()) {
+    Blob image = rs1.getBlob("Image");
+    if (image != null) {
+        InputStream imageStream = image.getBinaryStream();
+
+        String sql = "UPDATE Cart SET Image=? WHERE ItemName='"+name+"' AND Description='"+des+"'";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setBinaryStream(1, imageStream);
+       
+
+        ps.executeUpdate();
+    }
+}
+
+while (rs2.next()) {
+    Blob image = rs2.getBlob("Image");
+    if (image != null) {
+        InputStream imageStream = image.getBinaryStream();
+
+        String sql = "UPDATE Cart SET Image=? WHERE ItemName='"+name+"' AND Description='"+des+"'";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setBinaryStream(1, imageStream);
         
-            
-            
-            
+
+        ps.executeUpdate();
+    }
+}
+            response.sendRedirect("Cart.jsp");
+                    
+                   
+        } catch (Exception ex) {
+            Logger.getLogger(AddCart.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 

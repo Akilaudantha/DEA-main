@@ -3,7 +3,9 @@
     Created on : Apr 14, 2024, 1:49:14 AM
     Author     : Akila Udantha
 --%>
-<%@ page import="java.io.*,java.sql.*,javax.servlet.http.*,javax.servlet.*,javax.servlet.annotation.MultipartConfig" %>
+
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ page language="java" %>
@@ -17,14 +19,17 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.io.PrintWriter" %>
 
-
+<%-- Configure the multipart configuration --%>
+<%-- The maxFileSize attribute sets the maximum size of a file upload (in bytes) --%>
+<%-- The maxRequestSize attribute sets the maximum size allowed for a multipart/form-data request (in bytes) --%>
+<%-- Adjust these values according to your requirements --%>
 <%@ page import="javax.servlet.annotation.MultipartConfig" %>
 <!DOCTYPE html>
-<html>
+<html><div style=" background-color: black;">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <title>Home</title>
+        <title>Clothes</title>
         
         <style>
             .pimage{
@@ -144,6 +149,10 @@
             {
                 window.location.href = "Clothes.jsp";
             }
+            else if (document.fn.select.value==="Home")
+            {
+                window.location.href = "Home.jsp";
+            }
         }
         </script>
 </head>
@@ -154,8 +163,10 @@
             <li><form name="fn" onchange="x()">
                     <select class="categ" name="select">
                 <option disabled selected style="color: gray;">Select Category</option>
+                <option value="Home">Home</option>
                 <option value="Shoes">Shoes</option>
-                <option value="Clothes">Clothes</option>
+                
+                
                 </select></form>
             </li>
             <li><a href="Help.html">Help & Services</a></li>
@@ -173,145 +184,140 @@
             </li>
         </ul>
     </nav>
-    
-    <div style=" background-color: black; padding-top: 50px;" >
-    
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" height="100%" width="100%" src="Image/cr1.jpg" alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" height="100%" width="100%" src="Image/cr2.jpg" alt="Second slide">
-            </div>
-            <%--<div class="carousel-item">
-                <img class="d-block w-100" src="image3.jpg" alt="Third slide">
-            </div>--%>
+    <div style=" background-color: white; padding-top: 50px; padding-bottom: 10px; padding-right: 10px; padding-left: 10px;">
+    <%
+        
+    Class.forName("com.mysql.jdbc.Driver");
+    String url="jdbc:mysql://localhost:3306/mainDEA";
+    Connection con=DriverManager.getConnection(url,"root","");
+    Statement st=con.createStatement();
+    String q1="SELECT*FROM Clothes";
+     ResultSet rs1=st.executeQuery(q1);
+     
+    %>
+  
+    <table> <tr>
+                       
+<%
+    int a=0;
+    int b=0;
+     while(a < 5 && rs1.next())
+     {%>
+     
+     <%
+        if (a==4)
+        {
+            %></tr><tr>
+           <% while(b < 4)
+        {%>
+            <td > <div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';" >
+                 <% 
+                byte[] imageData = rs1.getBytes("Image");
+                String base64Image = Base64.getEncoder().encodeToString(imageData);
+                
+                 %>
+                 <img src="data:image/png;base64,<%= base64Image %>"  width="255" height="280" />
+                 <center><form action="AddCart" method="post"><h3><%=rs1.getString("ItemName") %><input type="hidden" name="name" value="<%=rs1.getString("ItemName") %>" /></h3>
+                <p><%= rs1.getString("Description") %></p><input type="hidden" name="des" value="<%=rs1.getString("Description") %>" />
+                <h5>Rs.<%= rs1.getString("Price") %></h5><input type="hidden" name="price" value="<%=rs1.getString("Price") %>" />
+                
+                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></form></center>
+                
+                </div></td>
+                     <% b++; 
+                     if(b<=3)
+                     { rs1.next();} 
+                    }
+                        break;}
+                    %>
+                    
+                <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';" >
+                 <% 
+                byte[] imageData = rs1.getBytes("Image");
+                String base64Image = Base64.getEncoder().encodeToString(imageData);
+                
+                 %>
+                 <img src="data:image/png;base64,<%= base64Image %>" width="255" height="280" />
+                 <center><form action="AddCart" method="post"><h3><%=rs1.getString("ItemName") %><input type="hidden" name="name" value="<%=rs1.getString("ItemName") %>" /></h3>
+                <p><%= rs1.getString("Description") %></p><input type="hidden" name="des" value="<%=rs1.getString("Description") %>" />
+                <h5>Rs.<%= rs1.getString("Price") %></h5><input type="hidden" name="price" value="<%=rs1.getString("Price") %>" />
+                
+                <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></form></center>
+                
+                </div></td>
+
+                     <% a++;
+                    }
+                    %>
+        </tr>
+        
+    </table></div>
+        <div style=" background-color: black; color: white; text-align: center;">
+            <hr style=" background-color: white; height: 5px;">
+            <h2 style=" letter-spacing: 20px;">STEP INTO STYLE</h2>
+            <hr style=" background-color: white; height: 5px;">
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-        
-        
-    </div>
-        
-        
-        <div style=" background-color: black;">
-        <div class="container">
-        <div class="flex-container">
-            <div class="flex-item" style=" border: 0;"><img  src="Image/form.jpg" width="100%" height="100%"></div>
-            <div class="flex-item" style=" border: 0;"><br><br><h3 style=" text-align: center;">100% Sri Lankan</h3>
-                <p style=" text-align: center;">dgfiuoregfiolgjlsdhklg fghrfghdsfig riughoirehgiubsdflg ioghibfsdogbodsfgl</p></div>
-        </div></div></div>
-            <div class="flex-container">
-                <div class="flex-item" style=" border: 0;"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
-                <div class="flex-item" style=" border: 0;"><a href="Clothes.jsp"><img  src="Image/login.jpg" width="100%" height="100%"></a></div>
-</div>
-            
-            <br>
-            
-            <hr>
-        
-            
-                <%
-                    Class.forName("com.mysql.jdbc.Driver");
-                    String url="jdbc:mysql://localhost:3306/mainDEA";
-                    Connection con=DriverManager.getConnection(url,"root","");
-                    Statement st1=con.createStatement();
-                    
-                    String q1="SELECT*FROM Shoes";
-                    ResultSet rs1=st1.executeQuery(q1);
-                    Statement st2=con.createStatement();
-                    String q2="SELECT * FROM Clothes";
-                    ResultSet rs2=st2.executeQuery(q2);
-                    int a=0;
-                    %>
-                    
-                    <table>
-                        <tr>
-                            <%while(a < 2 && rs1.next() && rs2.next() )
-                     {%>
-                    
-                    <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';" >
+        <div style=" background-color: white; padding-top: 10px; padding-bottom: 50px; padding-right: 10px; padding-left: 10px;"> <table> <tr>
+                       
+<%
+     int c=0;
+    int d=0;
+     while(c < 5 && rs1.next())
+     {%>
+     
+     <%
+        if (c==4)
+        {
+            %></tr><tr>
+           <% while(d < 4)
+        {%>
+        <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';" >
                  <% 
                 byte[] imageData = rs1.getBytes("Image");
                 String base64Image = Base64.getEncoder().encodeToString(imageData);
                 
                  %>
-                 <img src="data:image/png;base64,<%= base64Image %>" width="100%" height="100%" />
-                <center><h3><%=rs1.getString("ItemName") %></h3>
-                <p><%= rs1.getString("Description") %></p>
-                <h5>Rs.<%= rs1.getString("Price") %></h5>
-                <form action="Shoes.jsp">
-                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">View more</button></center>
-                </form>
+                 <img src="data:image/png;base64,<%= base64Image %>" width="255" height="280" />
+                <center><form action="AddCart" method="post"><h3><%=rs1.getString("ItemName") %><input type="hidden" name="name" value="<%=rs1.getString("ItemName") %>" /></h3>
+                <p><%= rs1.getString("Description") %></p><input type="hidden" name="des" value="<%=rs1.getString("Description") %>" />
+                <h5>Rs.<%= rs1.getString("Price") %></h5><input type="hidden" name="price" value="<%=rs1.getString("Price") %>" />
+                
+                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></form></center>
+                
                 </div></td>
-
-                <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';">
-                 <% 
-                byte[] iData = rs2.getBytes("Image");
-                String base64 = Base64.getEncoder().encodeToString(iData);
-                 %>
-                 <img src="data:image/png;base64,<%= base64 %>" width="100%" height="100%" />
-                <center><h3><%= rs2.getString("ItemName") %></h3>
-                <p><%= rs2.getString("Description") %></p>
-                <h5>Rs.<%= rs2.getString("Price") %></h5>
-                <form action="Clothes.jsp">
-                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">View more</button></center>
-                </form>
-                </div></td>
-                    
-                     <% a++;  
+                     <% d++;  
+                     if (d<=3)
+                     {rs1.next();}
                     }
+                        break;}
                     %>
-                     </tr>
-                     
-                     <%a=0;%>
-                     <tr>
-                           <%while(a < 2 && rs1.next() && rs2.next() )
-                     {%>
                     
-                    <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';" >
+                <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';" >
                  <% 
                 byte[] imageData = rs1.getBytes("Image");
                 String base64Image = Base64.getEncoder().encodeToString(imageData);
                 
                  %>
-                 <img src="data:image/png;base64,<%= base64Image %>" width="100%" height="100%" />
-                <center><h3><%=rs1.getString("ItemName") %></h3>
-                <p><%= rs1.getString("Description") %></p>
-                <h5>Rs.<%= rs1.getString("Price") %></h5>
-                <form action="Shoes.jsp">
-                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">View more</button></center>
+                 <img src="data:image/png;base64,<%= base64Image %>" width="255" height="280" />
+                <center><form action="AddCart" method="post"><h3><%=rs1.getString("ItemName") %><input type="hidden" name="name" value="<%=rs1.getString("ItemName") %>" /></h3>
+                <p><%= rs1.getString("Description") %></p><input type="hidden" name="des" value="<%=rs1.getString("Description") %>" />
+                <h5>Rs.<%= rs1.getString("Price") %></h5><input type="hidden" name="price" value="<%=rs1.getString("Price") %>" />
+                
+                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></form></center>
                 </form>
                 </div></td>
 
-                <td><div class="card"  onmousemove="this.style.backgroundColor='black'; this.style.color='white';" onmouseout="this.style.backgroundColor = 'white';this.style.color='black';">
-                 <% 
-                byte[] iData = rs2.getBytes("Image");
-                String base64 = Base64.getEncoder().encodeToString(iData);
-                 %>
-                 <img src="data:image/png;base64,<%= base64 %>" width="100%" height="100%" />
-                <center><h3><%= rs2.getString("ItemName") %></h3>
-                <p><%= rs2.getString("Description") %></p>
-                <h5>Rs.<%= rs2.getString("Price") %></h5>
-                <form action="Clothes.jsp">
-                    <button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">View more</button></center>
-                </form>
-                </div></td>
-                    
-                     <% a++;  
+                     <% c++;
                     }
                     %>
-                     </tr>
-                     
-                     </table>
+        </tr>
+        
+    </table>
+    </div>
+            
+            
+            
+              
         
                      <div class="footer">
                         <div class="flex-container">
@@ -342,15 +348,15 @@
                                     </div></div></div>
                         </div>
                      </div>
-                      <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">© 2024 Mr.Style. All rights reserved.
+     <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">© 2024 Mr.Style. All rights reserved.
 </footer>
         
-       
        
         
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+</div>
     
 </html>
