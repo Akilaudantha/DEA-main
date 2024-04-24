@@ -97,6 +97,9 @@
         .flex-container {
         display: flex;
     }
+    p{
+        text-align: center;
+    }
     .flex-item {
         flex: 1; 
         background-color: black;
@@ -109,6 +112,9 @@
         
         
         
+    }
+    td{
+        padding-right: 110px;
     }
     .card {
        
@@ -136,6 +142,13 @@
         background-color: black;
         width: 100%;
     }
+    h3{
+        text-align: center;
+    }
+    h4{
+        text-align: center;
+    }
+    
         
     </style>
     <script>
@@ -159,20 +172,18 @@
 <body>
     <nav class="menu">
         <ul>
-            <li><a href="Home.jsp"><img src="Image/login.jpg" height="50" width="50"></a></li>
-            <li>
-                <form name="fn" onchange="x()">
+            <li><a href="Home.jsp"><img src="Image/logo.jpg" height="40" width="150"></a></li>
+            <li><form name="fn" onchange="x()">
                     <select class="categ" name="select">
                 <option disabled selected style="color: gray;">Select Category</option>
-                <option value="Home">Home</option>
                 <option value="Shoes">Shoes</option>
                 <option value="Clothes">Clothes</option>
                 </select></form>
             </li>
-            <li><a href="#">Help & Services</a></li>
+            <li><a href="Help.html">Help & Services</a></li>
             <li><a href="#">About Us</a></li>
             <li> <form action="search.jsp" method="post">
-                    <input style=" border: 0; background-color: #333333; color: #b3b3b3;"  type="text" name="search" class="search-input" placeholder="Search here ">
+                    <input style=" border: 0; background-color: #333333; color: #b3b3b3; width: 450px;"  type="text" name="search" class="search-input" placeholder="Search here ">
                     <button type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#333333'; this.style.color='white';" class="search-button"  style=" background-color: #333333; border: 0; ">Search</button>
                 </form>
             </li>
@@ -184,49 +195,81 @@
             </li>
         </ul>
     </nav>
-    <div style="background-color: black; padding: 20px;">
+    <div style="background-color: black; padding: 20px; padding-top: 80px;">
+        <%
+   Class.forName("com.mysql.jdbc.Driver");
+   String url="jdbc:mysql://localhost:3306/mainDEA";
+   Connection con=DriverManager.getConnection(url,"root","");
+   Statement st=con.createStatement();
+   String q1="SELECT*FROM Shoes";
+   ResultSet rs=st.executeQuery(q1);
+    %>
   
-    <div style="background-color: black; padding: 20px;">
-        <p style=" padding-top: 25px;"> <h1><b><font color="red">MEN SHOES</font></b></h1> </p>  </div>
-<br>
-    <div class="row">
-        
-        <div class="col-md-4">
-           <div class="card">
-    <img class="card-img-top" src="Image/1.1.png" alt="First slide">
-    <div class="card-body">
-        <p class="card-text">Description for the first image.</p>
-        <br>
-        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
-    </div>
-</div>
-
-        </div>
-
-        <!-- Card for the second image -->
-        <div class="col-md-4">
-            <div class="card">
-                <img class="card-img-top" src="Image/11.png" alt="Second slide">
-                <div class="card-body">
-                    <p class="card-text">Description for the second image.</p>
-                     <br>
-        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
-                </div>
+     <table>
+        <tr>
+            
+            <% 
+                int d=0;
+                int c=0;
+                while(rs.next() && c<4)
+                {
+            if(c==3)
+            {%>
+        </tr><tr>
+           <% while(d<3){
+ %><td>
+                  <div class="col-md-4">
+        <div class="card">
+            <% 
+                byte[] imageData = rs.getBytes("Image");
+                String base64Image = Base64.getEncoder().encodeToString(imageData);
+                
+                 %>
+                 <img src="data:image/png;base64,<%= base64Image %>"  width="255" height="280" />
+            <div class="card-body"><form action="AddCart" method="post">
+                <h3><%=rs.getString("ItemName") %></h3>
+                <p class="card-text"><%=rs.getString("Description")%></p>
+                <h4>Rs:<%=rs.getString("Price") %></h4>
+                 <br>
+                 <center><button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></form></center></center> 
+                </form></div>
             </div>
         </div>
+    
+                  
+              </td> 
+            <%rs.next();
+            d++;}
 
-        <!-- Card for the third image (example added) -->
-        <div class="col-md-4">
-            <div class="card">
-                <img class="card-img-top" src="Image/5.png" alt="Third slide"> <!-- Change src to your actual image path -->
-                <div class="card-body">
-                    <p class="card-text">Description for the third image.</p>
-                     <br>
-        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
-                </div>
+            break;
+            
+
+}
+            %><td>
+                  <div class="col-md-4">
+        <div class="card">
+            <% 
+                byte[] image = rs.getBytes("Image");
+                String base64 = Base64.getEncoder().encodeToString(image);
+                
+                 %>
+                 <img src="data:image/png;base64,<%= base64 %>"  width="255" height="230" />
+            <div class="card-body"><form action="AddCart" method="post">
+                <h3><%=rs.getString("ItemName") %></h3><input type="hidden" name="name" value="<%=rs.getString("ItemName") %>">
+                <p class="card-text"><%=rs.getString("Description")%></p><input type="hidden" name="des" value="<%=rs.getString("Description") %>">
+                <h4>Rs:<%=rs.getString("Price") %></h4><input type="hidden" name="price" value="<%=rs.getString("Price") %>">
+                 <br>
+                 <center><button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></form></center></center> 
+                </form>
             </div>
         </div>
     </div>
+                  
+              </td>  <% c++;}
+            
+            %>
+        </tr>
+    </table>
 </div>
 
 
@@ -243,78 +286,8 @@
         </div></div></div>
            <div style="background-color: black; padding: 20px;">
     <div class="row">
-        <!-- Card for the first image -->
-        <div class="col-md-4">
-            <div class="card">
-                <img class="card-img-top" src="Image/1.1.png" alt="First slide">
-                <div class="card-body">
-                    <p class="card-text">Description for the first image.</p>
-                     <br>
-        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
-                </div>
-            </div>
-        </div>
+       
 
-        <!-- Card for the second image -->
-        <div class="col-md-4">
-            <div class="card">
-                <img class="card-img-top" src="Image/11.png" alt="Second slide">
-                <div class="card-body">
-                    <p class="card-text">Description for the second image.</p>
-                     <br>
-        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
-                </div>
-            </div>
-        </div>
-
-        <!-- Card for the third image (example added) -->
-        <div class="col-md-4">
-            <div class="card">
-                <img class="card-img-top" src="Image/11.png" alt="Third slide"> <!-- Change src to your actual image path -->
-                <div class="card-body">
-                    <p class="card-text">Description for the third image.</p>
-                     <br>
-        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-            
-    <br><div style="background-color: black; padding: 20px;">
-        <p> <h1><b><font color="red">MEN SLIDERS</font></b></h1> </p>  </div><br>
-        <div class="row">
-    <div class="col-md-4">
-        <div class="card">
-            <img class="card-img-top" src="Image/07.jpg" alt="Second slide">
-            <div class="card-body">
-                <p class="card-text">Description for the second image.</p>
-                 <br>
-        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <img class="card-img-top" src="Image/89.png" alt="Third slide">
-            <div class="card-body">
-                <p class="card-text">Description for the third image.</p>
-                 <br>
-        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
-            </div>
-        </div>
-    </div>
-</div>
-<br>
-<%
-   Class.forName("com.mysql.jdbc.Driver");
-   String url="jdbc:mysql://localhost:3306/mainDEA";
-   Connection con=DriverManager.getConnection(url,"root","");
-   Statement st=con.createStatement();
-   String q1="SELECT*FROM Shoes";
-   ResultSet rs=st.executeQuery(q1);
-    %>
     <table>
         <tr>
             
@@ -335,13 +308,14 @@
                 String base64Image = Base64.getEncoder().encodeToString(imageData);
                 
                  %>
-                 <img src="data:image/png;base64,<%= base64Image %>"  width="255" height="280" />
-            <div class="card-body">
-                <h3><%=rs.getString("ItemName") %></h3>
-                <p class="card-text"><%=rs.getString("Description")%></p>
-                <h4>Rs:<%=rs.getString("Price") %></h4>
+                 <img src="data:image/png;base64,<%= base64Image %>"  width="250" height="200" />
+            <div class="card-body"><form action="AddCart" method="post">
+                <h3><%=rs.getString("ItemName") %></h3><input type="hidden" name="name" value="<%=rs.getString("ItemName") %>">
+                <p class="card-text"><%=rs.getString("Description")%></p><input type="hidden" name="des" value="<%=rs.getString("Description") %>">
+                <h4>Rs:<%=rs.getString("Price") %></h4><input type="hidden" name="price" value="<%=rs.getString("Price") %>">
                  <br>
-        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
+                 <center><button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></form></center></center> 
+                </form> 
             </div>
         </div>
     </div>
@@ -363,12 +337,13 @@
                 
                  %>
                  <img src="data:image/png;base64,<%= base64 %>"  width="255" height="280" />
-            <div class="card-body">
-                <h3><%=rs.getString("ItemName") %></h3>
-                <p class="card-text"><%=rs.getString("Description")%></p>
-                <h4>Rs:<%=rs.getString("Price") %></h4>
+            <div class="card-body"><form action="AddCart" method="post">
+                <h3><%=rs.getString("ItemName") %></h3><input type="hidden" name="name" value="<%=rs.getString("ItemName") %>">
+                <p class="card-text"><%=rs.getString("Description")%></p><input type="hidden" name="des" value="<%=rs.getString("Description") %>">
+                <h4>Rs:<%=rs.getString("Price") %></h4><input type="hidden" name="price" value="<%=rs.getString("Price") %>">
                  <br>
-        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
+                 <center><button style=" border-radius: 4px; width: 100px; background-color: #cccccc; font-weight: bold; border: 0; " type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#cccccc'; this.style.color='black';">Add to Cart</button></form></center></center> 
+                </form> 
             </div>
         </div>
     </div>
@@ -396,7 +371,7 @@
                                         0112345678 / 0335869568</p></div></div>
                             </div>
                             <div class="flex-footer"  style="text-align:center;"><div class=" container"><br>
-                                    <br><br><a href="Home.jsp"><img src="Image/login.jpg" width="200px" height="100px"></a></div></div>
+                                    <br><br><a href="Home.jsp"><img src="Image/logo.jpg" style=" width:250px; height:100px; border-radius: 8px;"></a></div></div>
                             <div class="flex-footer"  style="text-align: right; "><div class=" container"><div  style=" padding-right: 20px;"><br>
                                         <br><p style="color: white;">Follow us</p>
                                         
@@ -413,35 +388,9 @@
                                     </div></div></div>
                         </div>
                      </div>
-                      <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">©️ 2024 ABC Company. All rights reserved.
+                      <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">© 2024 Mr.Style. All rights reserved.
 </footer>
-        <%--<%// Establish the connection to your database
-        Class.forName("com.mysql.jdbc.Driver");
-        String url="jdbc:mysql://localhost:3306/mainDEA";
         
-        Connection conn = DriverManager.getConnection(url, "root", "");
-        
-        
-        
-        
-        Statement s = conn.createStatement();
-        
-        String sql = "SELECT * FROM Clothes";
-        
-        ResultSet rs=s.executeQuery(sql);
-        
-        while (rs.next())
-        {
-            
-        byte[] imageData = rs.getBytes("Image");
-        
-       
-        String base64Image = Base64.getEncoder().encodeToString(imageData);
-        
-         
-        out.println("<tr><td><img src=\"data:image/png;base64," + base64Image + "\" /></td></tr>");
-        
-        }%>--%>
        
        
         
