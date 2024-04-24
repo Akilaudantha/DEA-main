@@ -4,6 +4,8 @@
     Author     : Akila Udantha
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ page language="java" %>
@@ -305,6 +307,77 @@
     </div>
 </div>
 <br>
+<%
+   Class.forName("com.mysql.jdbc.Driver");
+   String url="jdbc:mysql://localhost:3306/mainDEA";
+   Connection con=DriverManager.getConnection(url,"root","");
+   Statement st=con.createStatement();
+   String q1="SELECT*FROM Shoes";
+   ResultSet rs=st.executeQuery(q1);
+    %>
+    <table>
+        <tr>
+            
+            <% 
+                int b=0;
+                int a=0;
+                while(rs.next() && a<4)
+                {
+            if(a==3)
+            {%>
+        </tr><tr>
+           <% while(b<3){
+ %><td>
+                  <div class="col-md-4">
+        <div class="card">
+            <% 
+                byte[] imageData = rs.getBytes("Image");
+                String base64Image = Base64.getEncoder().encodeToString(imageData);
+                
+                 %>
+                 <img src="data:image/png;base64,<%= base64Image %>"  width="255" height="280" />
+            <div class="card-body">
+                <h3><%=rs.getString("ItemName") %></h3>
+                <p class="card-text"><%=rs.getString("Description")%></p>
+                <h4>Rs:<%=rs.getString("Price") %></h4>
+                 <br>
+        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
+            </div>
+        </div>
+    </div>
+                  
+              </td> 
+            <%rs.next();
+            b++;}
+
+            break;
+            
+
+}
+            %><td>
+                  <div class="col-md-4">
+        <div class="card">
+            <% 
+                byte[] image = rs.getBytes("Image");
+                String base64 = Base64.getEncoder().encodeToString(image);
+                
+                 %>
+                 <img src="data:image/png;base64,<%= base64 %>"  width="255" height="280" />
+            <div class="card-body">
+                <h3><%=rs.getString("ItemName") %></h3>
+                <p class="card-text"><%=rs.getString("Description")%></p>
+                <h4>Rs:<%=rs.getString("Price") %></h4>
+                 <br>
+        <center><a href="your-purchase-link.html" class="btn btn-primary">Purchase</a></center> 
+            </div>
+        </div>
+    </div>
+                  
+              </td>  <% a++;}
+            
+            %>
+        </tr>
+    </table>
             
             
             
