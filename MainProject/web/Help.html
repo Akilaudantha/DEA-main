@@ -172,6 +172,26 @@
             }
         }
         </script>
+        <script>
+        function y() {
+          
+            if (document.Help.fname.value==="" || document.Help.lname.value==="" || document.Help.phone.value==="" || document.Help.email.value==="" || document.Help.msg.value==="")
+            {
+                alert("Please fill all details");
+                return false;
+            }
+            if (isNaN(document.Help.phone.value))
+            {
+                alert("Please enter valid phone number");
+                return false;
+            }
+           
+            else
+            {
+                alert("Success");
+            }
+        }
+    </script>
 </head>
 <body style="background-color:black; color:white; ">
     <nav class="menu">
@@ -207,7 +227,7 @@
            
             
         
-        <form action="Message" method="post">
+        <form name="Help"  action="Message" method="post">
             <table border="0">
               
                 <tbody>
@@ -217,7 +237,7 @@
                     </tr>
                     <tr>
                         <td><label>Last Name:</label></td>
-                        <td><input type="text" name="lname" value="" /></td>
+                        <td><input onmousemove="this.style.backgroundColor = 'white';" onmouseout="this.style.backgroundColor = 'gray';" type="text" name="lname" value="" /></td>
                     </tr>
                     <tr>
                         <td><label>Contact Number:</label></td>
@@ -232,7 +252,7 @@
                         <td><textarea onmousemove="this.style.backgroundColor = 'white';" onmouseout="this.style.backgroundColor = 'gray';" name="msg" style= "height:80px; width:188px;"></textarea></td>
                     </tr>
                     <tr>
-                        <td style="padding-left: 30px;">    <button type="submit">Submit</button></td>
+                        <td style="padding-left: 30px;">    <button type="submit" onclick="return y()">Submit</button></td>
                         <td style="padding-left: 20px;"><button type="reset">Reset</button></td>
                     </tr>
                 </tbody>
