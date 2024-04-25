@@ -17,6 +17,7 @@
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.io.PrintWriter" %>
+<%@page import="java.sql.*" %>
 
 
 <%@ page import="javax.servlet.annotation.MultipartConfig" %>
@@ -242,16 +243,22 @@
         String qu="SELECT * FROM Cart";
         ResultSet rs=st.executeQuery(qu);
         
-        String sum="SELECT SUM(Price) AS total FROM Cart";
-        ResultSet rs2=st.executeQuery(sum);
+        float total=0.00f;
+        
+        
     %>
        
             
         
 <center style=" padding-top: 50px; padding-bottom: 500px; "><table>
         <thead ><tr><th><h4>Item</h4></th><th><h4>Name</h4></th><th><h4>Description</h4></th><th><h4>Price</h4></th></tr></thead>
-        <%while(rs.next())
-        {%>
+        <%
+          
+            while(rs.next())
+        {
+            
+            
+        %>
         
         <tr>
             <td><% 
@@ -261,9 +268,20 @@
         <center> <img src="data:image/png;base64,<%= base64 %>" width="80px" height="60px" /></center></td><td><%=rs.getString("ItemName")%></td><td><%=rs.getString("Description")%></td><td><%=rs.getString("Price")%></td><td><form action="DCart" method="post"><button type="submit">Delete</button><input type="hidden" name="name" value="<%=rs.getString("ItemName")%>"></form></td></tr>
         
         
-        <%}%>
+        <%float price = rs.getFloat("Price");
+        total += price; 
+    }
+            %>
         <tr><td></td><td></td><td></td><td><hr style=" background-color: black; width: 50px;"></td></tr>
-        <tr><td></td><td></td><td></td><td></td></tr>
+        <% if (total==0)
+        {%>
+        <tr><td></td><td></td><td></td><td>Cart is Empty</td></tr>
+        <%}
+         if (total!=0)
+        {%>
+        <tr><td></td><td></td><td></td><td><%out.println(""+total);%></td></tr>
+        <tr><td></td><td></td><td><a href="Payment.html"><button type="submit" style=" width: 200px;">Go to Payment</button></a></td></tr>
+        <%}%>
     </table></center>
     
    

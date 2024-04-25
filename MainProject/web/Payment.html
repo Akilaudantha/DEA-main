@@ -189,7 +189,7 @@ and open the template in the editor.
         }
             function y()
             {
-                if(document.pay.Card.value.length<12)
+                if(document.pay.Card.value.length<16)
                 {
                     alert("Please Enter Valid Card Number");
                     return false;
@@ -207,8 +207,14 @@ and open the template in the editor.
                 }
                 else
                 {
-                    alert("Did you like to save your Card details");
-                    
+                     var result = confirm("Do you want to save your Card details?");
+                    if (result===true) {
+                        
+                     
+                    } else {
+    
+                     window.location.href = "DPayment.java";
+}
                 }
             }
             </script>
@@ -218,32 +224,30 @@ and open the template in the editor.
     
     <body>
         <nav class="menu">
-            <ul>
-                <li><a href="Home.jsp"><img src="Image/logo.jpg" height="40" width="150"></a></li>
-                <li><form name="fn" onchange="x()">
-                        <select class="categ" name="select">
-                            <option disabled selected style="color: gray;">Select Category</option>
-                            <option value="Home">Home</option>
-                            <option value="Shoes">Shoes</option>
-
-
-                        </select></form>
-                </li>
-                <li><a href="Help.html">Help & Services</a></li>
-                <li><a href="#">About Us</a></li>
-                <li> <form action="search.jsp" method="post">
-                        <input style=" border: 0; background-color: #333333; color: #b3b3b3; width: 450px;"  type="text" name="search" class="search-input" placeholder="Search here ">
-                        <button type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color = 'white';" onmouseout="this.style.backgroundColor = '#333333'; this.style.color = 'white';" class="search-button"  style=" background-color: #333333; border: 0; ">Search</button>
-                    </form>
-                </li>
-                <li></li>
-                <li><a href="Cart.jsp" style=" padding-left: 30px;"><img src="Image/cart.png"  height="45" width="45" style="  background-color: white; border-radius: 50px;"></a></li>
-                <li><form action="index.html" style="padding-left: 5px; ">
-                        <button style=" background-color: #a2090c; border: 0; font-size: 12px; width: 70px; height: 35px; "  type="submit" class="out-button">Log Out</button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
+        <ul>
+            <li><a href="Home.jsp"><img src="Image/logo.jpg" height="40" width="150"></a></li>
+            <li><form name="fn" onchange="x()">
+                    <select class="categ" name="select">
+                <option disabled selected style="color: gray;">Select Category</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Clothes">Clothes</option>
+                </select></form>
+            </li>
+           
+            <li><a href="#">About Us</a></li>
+            <li> <form action="search.jsp" method="post">
+                    <input style=" border: 0; background-color: #333333; color: #b3b3b3; width: 450px; height: 25px; "  type="text" name="search" class="search-input" placeholder="Search here ">
+                    <button type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#333333'; this.style.color='white';" class="search-button"  style=" background-color: #333333; border: 0; height: 42px; ">Search</button>
+                </form>
+            </li>
+            <li></li>
+            <li><a href="Cart.jsp" style=" padding-left: 30px;"><img src="Image/cart.png"  height="45" width="45" style="  background-color: white; border-radius: 50px;"></a></li>
+            <li><form action="index.html" style="padding-left: 5px; ">
+                    <button style=" background-color: #a2090c; border: 0; font-size: 12px; width: 70px; height: 35px; "  type="submit" class="out-button">Log Out</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
         <br>
         <br>
         <br>
