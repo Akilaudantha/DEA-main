@@ -205,13 +205,13 @@
         <div style=" background-color: black;">
         <div class="container">
         <div class="flex-container">
-            <div class="flex-item" style=" border: 0;"><img  src="Image/form.jpg" width="100%" height="100%"></div>
+            <div class="flex-item" style=" border: 0;"><img  src="Image/logo.jpg" width="100%" height="100%"></div>
             <div class="flex-item" style=" border: 0;"><br><br><h3 style=" text-align: center;">100% Sri Lankan</h3>
-                <p style=" text-align: center;">dgfiuoregfiolgjlsdhklg fghrfghdsfig riughoirehgiubsdflg ioghibfsdogbodsfgl</p></div>
+                <p style=" text-align: center;">100% Sri Lankan shoes and clothes are a vibrant reflection of the island's rich heritage, blending traditional craftsmanship with modern style. They feature intricate designs, vibrant colors, and high-quality local materials, embodying the essence of Sri Lanka's cultural diversity and artisanal excellence.</p></div>
         </div></div></div>
             <div class="flex-container">
-                <div class="flex-item" style=" border: 0;"><a href="Shoes.jsp"><img  src="Image/form.jpg" width="100%" height="100%"></a></div>
-                <div class="flex-item" style=" border: 0;"><a href="Clothes.jsp"><img  src="Image/login.jpg" width="100%" height="100%"></a></div>
+                <div class="flex-item" style=" border: 0;"><a href="Shoes.jsp"><img  src="Image/A1.jpg" width="100%" height="100%"></a></div>
+                <div class="flex-item" style=" border: 0;"><a href="Clothes.jsp"><img  src="Image/A2.jpg" width="100%" height="100%"></a></div>
 </div>
             
             <br>
