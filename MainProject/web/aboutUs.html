@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>About Us</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <style>
+            .pimage{
+                width: 20px;
+                height: 10px;
+            }
+        
+        .menu {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            z-index: 1000;
+            width: 100%;
+        }
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+        .menu li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+        }
+        .search-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .search-input {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 550px;
+            height: 40px;
+            max-width: 100%;
+            align-content: center;
+            text-align: center;
+        }
+        .search-button {
+            padding: 8px 12px;
+            border: 1px solid #007bff;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .out-button{
+            padding: 8px 12px;
+            border: 1px solid #007bff;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            align-content:  space-around;
+        }
+        .categ{
+            background-color: black;
+            color: #fff;
+        }
+        .flex-container {
+        display: flex;
+    }
+    .flex-item {
+        flex: 1; 
+        background-color: black;
+        color: white;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+    .flex-footer{
+        flex: 2; 
+        
+        
+        
+    }
+    .card {
+       
+        border: 0;
+        border-radius: 8px;
+        padding: 20px;
+        width: 295px;
+        height: 450px;
+       
+        background-color: #fff;
+        margin: 20px;
+    }
+
+  
+    .card h3 {
+        margin-top: 0;
+    }
+
+   
+    .card p {
+        margin-bottom: 0;
+    }
+    .footer{
+        height: 250px;
+        background-color: black;
+        width: 100%;
+    }
+   
+        body{
+             background-image:url('Image/login.jpg');
+             background-repeat:no-repeat;
+             background-position:center;
+             background-attachment: fixed;
+             background-size:cover;
+             justify-content: center;
+             align-items: center;
+             font-family: Arial, sans-serif;
+        }
+        h1{
+            font-size: 75px;
+            
+        }
+        h3{
+            font-size: 20px;
+        }
+        .menu {
+            background-color: none;
+            color: #fff;
+            padding: 10px;
+            z-index: 1000;
+            width: 100%;
+         .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu li {
+            display: inline-block;
+            margin-right: 20px;
+    </style>
+        <body>
+            <nav class="menu">
+        <ul>
+            <li><a href="Home.jsp"><img src="Image/logo.jpg" height="40" width="150"></a></li>
+            <li><form name="fn" onchange="x()">
+                    <select class="categ" name="select">
+                <option disabled selected style="color: gray;">Select Category</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Clothes">Clothes</option>
+                </select></form>
+            </li>
+            <li><a href="Help.html">Help & Services</a></li>
+            <li> <form action="search.jsp" method="post">
+                    <input style=" border: 0; background-color: #333333; color: #b3b3b3; width: 450px;"  type="text" name="search" class="search-input" placeholder="Search here ">
+                    <button type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#333333'; this.style.color='white';" class="search-button"  style=" background-color: #333333; border: 0; ">Search</button>
+                </form>
+            </li>
+            <li></li>
+            <li><a href="Cart.jsp" style=" padding-left: 30px;"><img src="Image/cart.png"  height="45" width="45" style="  background-color: white; border-radius: 50px;"></a></li>
+            <li><form action="index.html" style="padding-left: 5px; ">
+                    <button style=" background-color: #a2090c; border: 0; font-size: 12px; width: 70px; height: 35px; "  type="submit" class="out-button">Log Out</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+        <center><h1><b>About Us</b></h1>
+        <br><br>
+        <form>
+            <table>
+                <h3>
+                <tr><td>
+                        <img src="Image/ppa.jpg" style=" border-radius: 100px; height: 150px; width: 150px; margin-right: 20px;"></td>
+                    <td>Akila Perera<br>071-1234567<br><a href="#">Linkedin</a>
+    </tr>
+     <tr><td>
+                        <img src="Image/ppm.jpg" style=" border-radius: 100px; height: 150px; width: 150px; margin-right: 20px;"></td>
+                    <td>Mahima Induwara<br>071-1234567<br><a href="#">Linkedin</a>
+    </tr>
+    <tr><td>
+                        <img src="Image/ppd.jpg" style=" border-radius: 100px; height: 150px; width: 150px; margin-right: 20px;"></td>
+                    <td>Dasun bandara<br>071-1234567<br><a href="#">Linkedin</a>
+    </tr>
+    <tr><td>
+                        <img src="Image/pps.jpg" style=" border-radius: 100px; height: 150px; width: 150px; margin-right: 20px;"></td>
+                    <td>Sudam Perera<br>071-1234567<br><a href="#">Linkedin</a>
+    </tr>
+    <tr><td>
+                        <img src="Image/ppi.jpg" style=" border-radius: 100px; height: 150px; width: 150px; margin-right: 20px;"></td>
+                    <td>Isuru Udara<br>071-1234567<br><a href="#">Linkedin</a>
+    </tr>
+                </h3> </table></form></center>
+<div class="footer">
+                        <div class="flex-container">
+                            <div class="flex-footer">
+                                <div class=" container"><br>
+                                    <br>
+                                    <div  style=" padding-left: 20px;">
+                                        <p style="color:white;"><b>Contact Us</b><br><br>
+                                        <a href="#">Email Us</a><br><br>
+                                        0112345678 / 0335869568</p></div></div>
+                            </div>
+                            <div class="flex-footer"  style="text-align:center;"><div class=" container"><br>
+                                    <br><br><a href="Home.jsp"><img src="Image/logo.jpg" style=" width:250px; height:100px; border-radius: 8px;"></a></div></div>
+                            <div class="flex-footer"  style="text-align: right; "><div class=" container"><div  style=" padding-right: 20px;"><br>
+                                        <br><p style="color: white;"><b>Follow us</b></p>
+                                        
+                                        
+                                        <a href="#"> <img src="Image/fb.JPG" style=" border-radius: 100px; height: 35px; width: 35px; margin-right: 20px;"></a>
+                                        <a href="#">    <img src="Image/ins.JPG" style=" border-radius: 500px; height: 35px; width: 35px; margin-right: 20px;"></a>
+                                        <a href="#">    <img src="Image/wh.JPG" style=" border-radius: 500px; height: 35px; width: 35px; "></a>
+                                        <br><br><br>
+                                        
+                                    </div></div></div>
+                        </div>
+                     </div>
+                      <footer style="text-align: center; color: white; background-color: black; font-size: 11px;">© 2024 Mr.Style. All rights reserved.
+</footer></body>
+        
+       
+</html>
