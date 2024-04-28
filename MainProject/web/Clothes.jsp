@@ -170,7 +170,7 @@
                 </select></form>
             </li>
             <li><a href="Help.html">Help & Services</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="aboutUs.html">About Us</a></li>
             <li> <form action="search.jsp" method="post">
                     <input style=" border: 0; background-color: #333333; color: #b3b3b3; width: 450px;"  type="text" name="search" class="search-input" placeholder="Search here ">
                     <button type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#333333'; this.style.color='white';" class="search-button"  style=" background-color: #333333; border: 0; ">Search</button>
@@ -327,7 +327,7 @@
                                     <div  style=" padding-left: 20px;">
                                     <a href="AboutUs.html">About Us</a><br><br>
                                     <p style="color:white;">Contact Us<br><br>
-                                        <a href="#">Email Us</a><br><br>
+                                        <a href="aboutUs.html">Email Us</a><br><br>
                                         0112345678 / 0335869568</p></div></div>
                             </div>
                             <div class="flex-footer"  style="text-align:center;"><div class=" container"><br>
