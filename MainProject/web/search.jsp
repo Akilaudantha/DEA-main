@@ -31,12 +31,13 @@
        String q3="SELECT * FROM Acc";
        
        ResultSet rs1=st.executeQuery(q1);
-        ResultSet rs2=st2.executeQuery(q2);
+        //
         //ResultSet rs3=st.executeQuery(q3);
         
        while(rs1.next())
        {
-           
+           if (search.equals(rs1.getString("ItemName"))){
+               
                String q4="SELECT * FROM Shoes WHERE ItemName='"+search+"'";
                ResultSet rs4=st2.executeQuery(q4);
                
@@ -62,10 +63,17 @@
                
            }
 break;
+
        }
-       while(rs2.next())
+       
+}
+
+
+    ResultSet rs2=st2.executeQuery(q2);
+    while(rs2.next())
        {
-           
+           if (search.equals(rs1.getString("ItemName"))){
+               
                String q4="SELECT * FROM Clothes WHERE ItemName='"+search+"'";
                ResultSet rs4=st2.executeQuery(q4);
                
@@ -92,8 +100,9 @@ break;
            }
 break;
        }
-
        
+}
+    
        %>
        
        
