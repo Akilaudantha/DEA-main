@@ -165,7 +165,7 @@
             </li>
             <li><a href="Help.html">Help & Services</a></li>
             <li><a href="aboutUs.html">About Us</a></li>
-            <li> <form action="search.jsp" method="post">
+            <li> <form action="searchs" method="post">
                     <input style=" border: 0; background-color: #333333; color: #b3b3b3; width: 450px;"  type="text" name="search" class="search-input" placeholder="Search here ">
                     <button type="submit" onmousemove="this.style.backgroundColor = '#2a38ec'; this.style.color='white';" onmouseout="this.style.backgroundColor = '#333333'; this.style.color='white';" class="search-button"  style=" background-color: #333333; border: 0; ">Search</button>
                 </form>
