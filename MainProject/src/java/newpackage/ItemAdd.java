@@ -125,6 +125,17 @@ public class ItemAdd extends HttpServlet {
             ps.executeUpdate();
                 
             }
+            else if (type.equals("Acc")){
+            
+                String sql = "INSERT INTO Acc VALUES ('"+inum+"','"+iname+"','"+iprice+"','"+idescrip+"',?)";
+             
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setBlob(1, input);
+
+            
+            ps.executeUpdate();
+                
+            }
             response.sendRedirect("Home.jsp");
         }
 
