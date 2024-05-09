@@ -191,7 +191,7 @@
     String url="jdbc:mysql://localhost:3306/mainDEA";
     Connection con=DriverManager.getConnection(url,"root","");
     Statement st=con.createStatement();
-    String q1="SELECT*FROM Clothes";
+    String q1="SELECT*FROM Acc";
      ResultSet rs1=st.executeQuery(q1);
      
     %>
