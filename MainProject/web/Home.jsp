@@ -144,6 +144,10 @@
             {
                 window.location.href = "Clothes.jsp";
             }
+            else if (document.fn.select.value==="Acc")
+            {
+                window.location.href = "Accessories.jsp";
+            }
         }
         </script>
 </head>
@@ -156,6 +160,7 @@
                 <option disabled selected style="color: gray;">Select Category</option>
                 <option value="Shoes">Shoes</option>
                 <option value="Clothes">Clothes</option>
+                <option value="Acc">Accessories</option>
                 </select></form>
             </li>
             <li><a href="Help.html">Help & Services</a></li>
