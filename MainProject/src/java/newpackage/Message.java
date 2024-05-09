@@ -80,34 +80,30 @@ public class Message extends HttpServlet {
             throws ServletException, IOException {
          try {
          String fname = request.getParameter("fname");
-         String lname = request.getParameter("lname");
-         String phone = request.getParameter("phone");
-         String email = request.getParameter("email");
-         String msg = request.getParameter("msg");
-         
-         Class.forName("com.mysql.jdbc.Driver");
-         String url = "jdbc:mysql://localhost:3306/mainDEA";
-         Connection con = DriverManager.getConnection(url, "root", "");
-         Statement st=con.createStatement();
-         
-         String q1="INSERT INTO help VALUES ('"+fname+"','"+lname+"','"+phone+"','"+email+"','"+msg+"')";
-         st.executeUpdate(q1);
-         response.sendRedirect("Home.jsp");
+             String lname = request.getParameter("lname");
+             String phone = request.getParameter("phone");
+             String email = request.getParameter("email");
+             String msg = request.getParameter("msg");
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/mainDEA";
+            Connection con = DriverManager.getConnection(url, "root", "");
+            Statement st=con.createStatement();
+            
+            String q3="INSERT INTO help VALUES ('"+fname+"','"+lname+"','"+phone+"','"+email+"','"+msg+"')";
+            st.executeUpdate(q3);
+            response.sendRedirect("index.html");
           
          } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(siup.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Message.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 
 }

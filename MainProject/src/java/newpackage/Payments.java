@@ -86,7 +86,7 @@ public class Payments extends HttpServlet {
             String name=request.getParameter("Name");
             String ad=request.getParameter("Address");
             String cd=request.getParameter("Card");
-            String date=request.getParameter("Data");
+            String date=request.getParameter("Date");
             String cvc=request.getParameter("cvc");
             String phone=request.getParameter("phone");
             

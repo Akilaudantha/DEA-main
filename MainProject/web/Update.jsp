@@ -84,7 +84,25 @@
                  %>
         <center> <img src="data:image/png;base64,<%= base64 %>" width="80px" height="60px" /></center></td></tr>
             <%}%>
-    </table><br>
+    </table>
+    <h1 style=" text-align: center; font-weight: bold; color: red;">Accessories Table</h1>
+        <table border="1" style="width: 100%; height: 100%; border-collapse: collapse;" >
+            <thead><th>Item Number</th><th>Item Name</th><th>Price</th><th>Description</th><th>Image</th></thead>
+            <%
+                Statement st3=con.createStatement();
+             String q3="SELECT * FROM Acc";
+             ResultSet rs3=st3.executeQuery(q3);
+            while (rs3.next())
+            {%>
+        <tr><td><center><%=rs3.getString("ItemNum")%></center></td><td><%=rs3.getString("ItemName")%></td><td><center><%=rs3.getString("Price")%></center></td><td><%=rs3.getString("Description")%></td><td><% 
+                byte[] imageData = rs3.getBytes("Image");
+                String base64 = Base64.getEncoder().encodeToString(imageData);
+                 %>
+        <center> <img src="data:image/png;base64,<%= base64 %>" width="80px" height="60px" /></center></td></tr>
+            <%}%>
+    </table>
+    
+    <br>
         
     <div class="b">
             
@@ -92,6 +110,7 @@
             <table>
                 <tr><td><label>Select Item Category</label></td><td><select name="cat"><option value="Shoes">Shoes</option>
                                                                                        <option value="Clothes">Cloths</option>
+                                                                                       <option value="Acc">Accessories</option>
                                                                     </select></td></tr>
                 
                 <tr><td><label>Enter Item Code</label></td><td><input type="text" name="icode"></td></tr>

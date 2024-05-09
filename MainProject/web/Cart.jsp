@@ -291,7 +291,7 @@
                                 <div class=" container"><br>
                                     <br>
                                     <div  style=" padding-left: 20px;">
-                                    <a href="AboutUs.html">About Us</a><br><br>
+                                    <a href="aboutUs.html">About Us</a><br><br>
                                     <p style="color:white;">Contact Us<br><br>
                                         <a href="#">Email Us</a><br><br>
                                         0112345678 / 0335869568</p></div></div>

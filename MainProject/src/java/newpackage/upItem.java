@@ -158,6 +158,33 @@ public class upItem extends HttpServlet {
                 }
                 
             }
+            else if(cat.equals("Acc"))
+            {
+                if(up.equals("update"))
+                {
+                    String q3="UPDATE Acc SET ItemName='"+iname+"',Price='"+iprice+"',Description='"+ide+"' WHERE ItemNum='"+icode+"'";
+                    st.executeUpdate(q3);
+                    
+                    if (cimg.equals("yes"))
+                {
+                    String sql = "UPDATE Acc SET Image=? WHERE ItemNum='"+icode+"'";
+             
+                    PreparedStatement ps = con.prepareStatement(sql);
+                    ps.setBlob(1, input);
+            
+                    ps.executeUpdate();
+                    
+                }
+                    response.sendRedirect("Update.jsp");
+                }
+                else if(up.equals("delete"))
+                {
+                    String q4="DELETE FROM Acc WHERE ItemNum='"+icode+"'";
+                    st.executeUpdate(q4);
+                    response.sendRedirect("Update.jsp");
+                }
+                
+            }
             
         } catch (Exception ex) {
             Logger.getLogger(siup.class.getName()).log(Level.SEVERE, null, ex);
