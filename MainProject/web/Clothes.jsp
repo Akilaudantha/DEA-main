@@ -4,7 +4,7 @@
     Author     : Akila Udantha
 --%>
 
-<%@page import="java.sql.ResultSet"%>
+ <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -17,7 +17,7 @@
 <%@ page import="javax.servlet.http.Part" %>
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.Connection" %>
-<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.io.PrintWriter"%>
 
 <%-- Configure the multipart configuration --%>
 <%-- The maxFileSize attribute sets the maximum size of a file upload (in bytes) --%>
