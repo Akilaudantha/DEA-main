@@ -6,12 +6,9 @@
 package newpackage;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -91,17 +88,17 @@ public class Payments extends HttpServlet {
             String phone=request.getParameter("phone");
             
             Class.forName("com.mysql.jdbc.Driver");
-            String url="jdbc:mysql://localhost:3306/mainDEA";
-            Connection con=DriverManager.getConnection(url,"root","");
+            String url = "jdbc:mysql://localhost:3306/mainDEA";
+            Connection con = DriverManager.getConnection(url, "root", "");
             Statement st=con.createStatement();
 
+         String q="INSERT INTO Payment VALUES ('"+name+"','"+ad+"','"+cd+"','"+date+"','"+cvc+"','"+phone+"')";
+         st.executeUpdate(q);
+         
+         response.sendRedirect("Thankyou.html");
             
             
-            String q1="INSERT INTO Payment VALUES ('"+name+"','"+ad+"','"+cd+"','"+date+"','"+cvc+"','"+phone+"')";
-            st.executeUpdate(q1);
             
-            
-            response.sendRedirect("Thankyou.html");
                      
    
             

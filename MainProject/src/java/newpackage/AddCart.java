@@ -95,13 +95,16 @@ public class AddCart extends HttpServlet {
             Connection con=DriverManager.getConnection(url,"root","");
             Statement st1=con.createStatement();
             Statement st2=con.createStatement();
+            Statement st3=con.createStatement();
             
             String q1="INSERT INTO Cart (ItemName,Description,Price) VALUES ('"+name+"','"+des+"','"+price+"')";
             st1.executeUpdate(q1);
             String q2="SELECT * FROM Shoes WHERE ItemName='"+name+"' AND Description = '"+des+"'" ;
             String q3="SELECT * FROM Clothes WHERE ItemName='"+name+"' AND Description = '"+des+"'" ;
+            String q4="SELECT * FROM Acc WHERE ItemName='"+name+"' AND Description = '"+des+"'";
             ResultSet rs1=st1.executeQuery(q2);
             ResultSet rs2=st2.executeQuery(q3);
+            ResultSet rs3=st3.executeQuery(q4);
            
             while (rs1.next()) {
     Blob image = rs1.getBlob("Image");
@@ -126,6 +129,19 @@ while (rs2.next()) {
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setBinaryStream(1, imageStream);
         
+
+        ps.executeUpdate();
+    }
+}       
+    while (rs3.next()) {
+    Blob image = rs3.getBlob("Image");
+    if (image != null) {
+        InputStream imageStream = image.getBinaryStream();
+
+        String sql = "UPDATE Cart SET Image=? WHERE ItemName='"+name+"' AND Description='"+des+"'";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setBinaryStream(1, imageStream);
+       
 
         ps.executeUpdate();
     }
